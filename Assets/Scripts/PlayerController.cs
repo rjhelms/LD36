@@ -54,6 +54,17 @@ public class PlayerController : MonoBehaviour
         int moveMagnitude = Mathf.RoundToInt(moveInput * gameController.MoveSpeed);
         playerTransform.position += new Vector3(moveMagnitude, 0, 0);
 
+        if (Mathf.Abs(playerTransform.position.x) >= gameController.PlayerXCoordBoundsMagnitude)
+        {
+
+            if (playerTransform.position.x < 0)
+            {
+                playerTransform.position = new Vector3(-gameController.PlayerXCoordBoundsMagnitude, playerTransform.position.y);
+            } else
+            {
+                playerTransform.position = new Vector3(gameController.PlayerXCoordBoundsMagnitude, playerTransform.position.y);
+            }
+        }
         if (moveMagnitude > 0)
         {
             playerSpriteRenderer.sprite = SpriteRight;

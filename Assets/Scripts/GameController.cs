@@ -5,11 +5,14 @@ public class GameController : MonoBehaviour
 
     public Material RenderTexture;
     public Camera WorldCamera;
+    public Transform PlayerTransform;
 
-    [Header("Resolution")]
+    [Header("Resolution and Display")]
     public int TargetX = 160;
     public int TargetY = 200;
     private float pixelRatioAdjustment;
+    public int PlayerCameraYOffset = 120;
+    public int PlayerXCoordBoundsMagnitude = 80;
 
     [Header("Game Balance")]
     public float MoveSpeed = 1.0f;
@@ -41,6 +44,8 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        WorldCamera.transform.position = new Vector3(0, PlayerTransform.position.y - this.PlayerCameraYOffset, -10);
     }
+
+
 }
