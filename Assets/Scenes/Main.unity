@@ -137,6 +137,10 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 1000011195000638, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
   m_IsPrefabParent: 0
@@ -152,7 +156,7 @@ GameObject:
   - 50: {fileID: 315485320}
   m_Layer: 0
   m_Name: BottomScreenEdge
-  m_TagString: Bounds
+  m_TagString: Bottom
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -247,6 +251,10 @@ Prefab:
     - target: {fileID: 4000010675169086, guid: 250278c8e91e5454f910b35ae414726e, type: 2}
       propertyPath: m_LocalScale.x
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011943773284, guid: 250278c8e91e5454f910b35ae414726e, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 250278c8e91e5454f910b35ae414726e, type: 2}
@@ -386,6 +394,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000010675169086, guid: 250278c8e91e5454f910b35ae414726e, type: 2}
       propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011943773284, guid: 250278c8e91e5454f910b35ae414726e, type: 2}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -587,6 +599,10 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1000011195000638, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
   m_IsPrefabParent: 0
@@ -639,6 +655,10 @@ Prefab:
       propertyPath: m_Offset.y
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1000011195000638, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
   m_IsPrefabParent: 0
@@ -689,6 +709,10 @@ Prefab:
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1000011195000638, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
   m_IsPrefabParent: 0
@@ -730,6 +754,10 @@ Prefab:
     - target: {fileID: 4000010675169086, guid: 250278c8e91e5454f910b35ae414726e, type: 2}
       propertyPath: m_RootOrder
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011943773284, guid: 250278c8e91e5454f910b35ae414726e, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 250278c8e91e5454f910b35ae414726e, type: 2}
@@ -780,6 +808,10 @@ Prefab:
     - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
       propertyPath: m_LocalScale.x
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011195000638, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
@@ -957,7 +989,7 @@ GameObject:
   - 61: {fileID: 1484616444}
   - 50: {fileID: 1484616443}
   m_Layer: 0
-  m_Name: LeftScreenEdge (1)
+  m_Name: RightScreenEdge
   m_TagString: Bounds
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1052,6 +1084,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
       propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011195000638, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
