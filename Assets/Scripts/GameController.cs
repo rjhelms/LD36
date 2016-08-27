@@ -23,6 +23,7 @@ public class GameController : MonoBehaviour
     public float ProjectileSpeed = 2.0f;
     public float ShootInterval = 5.0f;
     public float NPCWalkSpeed = 1.0f;
+    public float NPCBaseStateChangeTime = 0.5f;
 
     [Header("Prefabs")]
     public GameObject PlayerProjectilePrefab;

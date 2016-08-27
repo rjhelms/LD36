@@ -4,7 +4,7 @@ using System.Collections;
 public class NPC : MonoBehaviour
 {
 
-    [Header("Sprites")]
+    [Header("Generic Sprites")]
     public Sprite[] UnconvertedSprites;
     public Sprite[] ConvertedSprites;
 
@@ -12,10 +12,10 @@ public class NPC : MonoBehaviour
     public bool HasComeOnScreen;
     public float AnimateInterval;
 
-    private int SpriteState;
-    private float nextSpriteChange;
-    private SpriteRenderer spriteRenderer;
-    private GameController gameController;
+    protected int SpriteState;
+    protected float nextSpriteChange;
+    protected SpriteRenderer spriteRenderer;
+    protected GameController gameController;
 
     // Use this for initialization
     void Start()
@@ -25,11 +25,10 @@ public class NPC : MonoBehaviour
 
         nextSpriteChange = Time.time + AnimateInterval;
         SpriteState = 0;
-        HasComeOnScreen = false;
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         if (Time.time > nextSpriteChange)
         {
@@ -53,9 +52,19 @@ public class NPC : MonoBehaviour
 
     void FixedUpdate()
     {
+
         if (HasComeOnScreen && !Converted)
-        {
             this.DoFrameAction();
+    }
+
+    void OnTriggerEnter2D(Collider2D coll)
+    {
+        if (coll.gameObject.tag == "Bottom")
+            HasComeOnScreen = true;
+        else if (coll.gameObject.tag == "Bounds" || coll.gameObject.tag == "NPC"
+            || coll.gameObject.tag == "AICollision")
+        {
+            this.transform.localScale = new Vector3(this.transform.localScale.x * -1, 1, 1);
         }
     }
 
@@ -67,18 +76,7 @@ public class NPC : MonoBehaviour
         nextSpriteChange = Time.time + AnimateInterval;
     }
 
-    public void OnTriggerEnter2D(Collider2D coll)
-    {
-        if (coll.gameObject.tag == "Bottom")
-            HasComeOnScreen = true;
-        else if (coll.gameObject.tag == "Bounds" || coll.gameObject.tag == "NPC"
-            || coll.gameObject.tag == "AICollision")
-        {
-            this.transform.localScale = new Vector3(this.transform.localScale.x * -1, 1, 1);
-        }
-    }
-
-    protected void DoFrameAction()
+    protected void Wander()
     {
         if (this.transform.localScale.x > 0)
         {
@@ -88,5 +86,10 @@ public class NPC : MonoBehaviour
         {
             this.transform.position -= new Vector3(gameController.NPCWalkSpeed, 0);
         }
+    }
+
+    protected virtual void DoFrameAction()
+    {
+        this.Wander();
     }
 }
