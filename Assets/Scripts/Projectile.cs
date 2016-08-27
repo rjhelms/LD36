@@ -32,5 +32,12 @@ public class Projectile : MonoBehaviour
             GetComponent<CircleCollider2D>().enabled = false;
             DestroyObject(this.gameObject, 0.2f);
         }
+
+        if (coll.gameObject.tag == "NPC")
+        {
+            Debug.Log("Collided with NPC");
+            coll.GetComponent<NPC>().Hit();
+            DestroyObject(this.gameObject);
+        }
     }
 }

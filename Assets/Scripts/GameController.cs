@@ -22,6 +22,7 @@ public class GameController : MonoBehaviour
 
     [Header("Prefabs")]
     public GameObject PlayerProjectilePrefab;
+    public GameObject[] NPCPrefabs;
 
     // Use this for initialization
     void Start()

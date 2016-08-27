@@ -90,6 +90,52 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &202909608
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -260
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011195000638, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_Name
+      value: EgyptianMale (4)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &315485317
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,6 +373,208 @@ Transform:
   - {fileID: 1241872871}
   m_Father: {fileID: 0}
   m_RootOrder: 1
+--- !u!1001 &603496465
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -32
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -300
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011195000638, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_Name
+      value: EgyptianMale (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_LocalScale.x
+      value: -1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &766500300
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -60
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 61000010727417468, guid: 2c76f19ee887e3d41967941c5a7c5a3c,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 61000010727417468, guid: 2c76f19ee887e3d41967941c5a7c5a3c,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: 10
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &794238156
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -240
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011195000638, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_Name
+      value: EgyptianMale (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_LocalScale.x
+      value: -1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &1220185135
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -140
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011195000638, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_Name
+      value: EgyptianMale (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_LocalScale.x
+      value: -1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1241872870
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,7 +698,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: 709624761
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 645a0df632ec88140b9cfbeda21e488f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -489,6 +737,56 @@ MonoBehaviour:
   - {fileID: 21300006, guid: 525c75c3768258e46b93617b28490214, type: 3}
   - {fileID: 21300008, guid: 525c75c3768258e46b93617b28490214, type: 3}
   - {fileID: 21300010, guid: 525c75c3768258e46b93617b28490214, type: 3}
+--- !u!1001 &2055450230
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -48
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -192
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000011195000638, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_Name
+      value: EgyptianMale (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000010523076322, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &2101805452
 GameObject:
   m_ObjectHideFlags: 0
@@ -523,12 +821,14 @@ MonoBehaviour:
   TargetY: 200
   PlayerCameraYOffset: 80
   PlayerXCoordBoundsMagnitude: 64
+  ProjectileYOffset: 12
   MoveSpeedX: 5
   MoveSpeedY: 1
   ProjectileSpeed: 4
   ShootInterval: 0.15
   PlayerProjectilePrefab: {fileID: 1000011340763166, guid: 46759d9eb2898f64a86c2e4550a899f4,
     type: 2}
+  NPCPrefabs: []
 --- !u!4 &2101805454
 Transform:
   m_ObjectHideFlags: 0
