@@ -8,6 +8,8 @@ TagManager:
   - NPC
   - Bounds
   - AICollision
+  - Top
+  - NPCProjectile
   layers:
   - Default
   - TransparentFX

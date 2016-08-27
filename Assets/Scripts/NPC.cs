@@ -55,14 +55,7 @@ public class NPC : MonoBehaviour
     {
         if (HasComeOnScreen && !Converted)
         {
-            if (this.transform.localScale.x > 0)
-            {
-                this.transform.position += new Vector3(gameController.NPCWalkSpeed, 0);
-            }
-            else
-            {
-                this.transform.position -= new Vector3(gameController.NPCWalkSpeed, 0);
-            }
+            this.DoFrameAction();
         }
     }
 
@@ -82,6 +75,18 @@ public class NPC : MonoBehaviour
             || coll.gameObject.tag == "AICollision")
         {
             this.transform.localScale = new Vector3(this.transform.localScale.x * -1, 1, 1);
+        }
+    }
+
+    protected void DoFrameAction()
+    {
+        if (this.transform.localScale.x > 0)
+        {
+            this.transform.position += new Vector3(gameController.NPCWalkSpeed, 0);
+        }
+        else
+        {
+            this.transform.position -= new Vector3(gameController.NPCWalkSpeed, 0);
         }
     }
 }

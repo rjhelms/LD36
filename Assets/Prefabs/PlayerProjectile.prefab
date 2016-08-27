@@ -21,8 +21,8 @@ GameObject:
   - 4: {fileID: 4000012325869470}
   - 212: {fileID: 212000012095802532}
   - 58: {fileID: 58000011348501486}
-  - 114: {fileID: 114000010649474356}
   - 50: {fileID: 50000012268480280}
+  - 114: {fileID: 114000011162609926}
   m_Layer: 0
   m_Name: PlayerProjectile
   m_TagString: Untagged
@@ -74,7 +74,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 6
---- !u!114 &114000010649474356
+--- !u!114 &114000011162609926
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -82,7 +82,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1000011340763166}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 820609f1764eadf45a72ff9dec8ba2b5, type: 3}
+  m_Script: {fileID: 11500000, guid: 6156191a4c412bc46a0abbc14d38072e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &212000012095802532
