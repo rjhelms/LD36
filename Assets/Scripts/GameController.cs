@@ -11,6 +11,14 @@ public class GameController : MonoBehaviour
     public int TargetY = 200;
     private float pixelRatioAdjustment;
 
+    [Header("Game Balance")]
+    public float MoveSpeed = 1.0f;
+    public float ProjectileSpeed = 2.0f;
+    public float ShootSpeed = 5.0f;
+
+    [Header("Prefabs")]
+    public GameObject PlayerProjectilePrefab;
+
     // Use this for initialization
     void Start()
     {
