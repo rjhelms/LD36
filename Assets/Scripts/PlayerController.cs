@@ -74,4 +74,9 @@ public class PlayerController : MonoBehaviour
             playerSpriteRenderer.sprite = SpriteLeft;
         }
     }
+
+    public void Hit()
+    {
+        Debug.Log("Hit!");
+    }
 }
