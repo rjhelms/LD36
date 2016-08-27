@@ -71,3 +71,6 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 StyleCop.Cache
+
+/Assets/Standard Assets/
+/Assets/Editor/ImageEffects/
