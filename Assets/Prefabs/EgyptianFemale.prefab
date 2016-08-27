@@ -89,8 +89,8 @@ MonoBehaviour:
   - {fileID: 21300012, guid: 645a0df632ec88140b9cfbeda21e488f, type: 3}
   - {fileID: 21300014, guid: 645a0df632ec88140b9cfbeda21e488f, type: 3}
   ConvertedSprites:
-  - {fileID: 21300008, guid: 645a0df632ec88140b9cfbeda21e488f, type: 3}
-  - {fileID: 21300010, guid: 645a0df632ec88140b9cfbeda21e488f, type: 3}
+  - {fileID: 21300016, guid: 645a0df632ec88140b9cfbeda21e488f, type: 3}
+  - {fileID: 21300018, guid: 645a0df632ec88140b9cfbeda21e488f, type: 3}
   Converted: 0
   AnimateInterval: 0.25
 --- !u!212 &212000011987562624
