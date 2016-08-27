@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     private SpriteRenderer playerSpriteRenderer;
     private int projectileSpriteIndex;
 
+    private float nextProjectileTime;
+
     // Use this for initialization
     void Start()
     {
@@ -20,25 +22,29 @@ public class PlayerController : MonoBehaviour
         playerTransform = GetComponent<Transform>();
         playerSpriteRenderer = GetComponent<SpriteRenderer>();
         projectileSpriteIndex = 0;
-
+        nextProjectileTime = Time.fixedTime;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButton("Fire1"))
         {
-            Debug.Log("Fire! " + projectileSpriteIndex);
+            if (Time.fixedTime > nextProjectileTime)
+            {
+                Debug.Log("Fire! " + projectileSpriteIndex);
+                nextProjectileTime = Time.fixedTime + gameController.ShootInterval;
 
-            Vector3 projectilePosition = new Vector3(playerTransform.position.x, playerTransform.position.y - 8);
-            GameObject projectile = (GameObject)Instantiate(gameController.PlayerProjectilePrefab,
-                projectilePosition, Quaternion.identity);
+                Vector3 projectilePosition = new Vector3(playerTransform.position.x, playerTransform.position.y - 8);
+                GameObject projectile = (GameObject)Instantiate(gameController.PlayerProjectilePrefab,
+                    projectilePosition, Quaternion.identity);
 
-            projectile.GetComponent<SpriteRenderer>().sprite = ProjectileSprites[projectileSpriteIndex];
+                projectile.GetComponent<SpriteRenderer>().sprite = ProjectileSprites[projectileSpriteIndex];
 
-            projectileSpriteIndex++;
-            if (projectileSpriteIndex == ProjectileSprites.GetLength(0))
-                projectileSpriteIndex = 0;
+                projectileSpriteIndex++;
+                if (projectileSpriteIndex == ProjectileSprites.GetLength(0))
+                    projectileSpriteIndex = 0;
+            }
         }
     }
 

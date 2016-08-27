@@ -459,8 +459,8 @@ MonoBehaviour:
   TargetX: 160
   TargetY: 200
   MoveSpeed: 5
-  ProjectileSpeed: 2
-  ShootSpeed: 5
+  ProjectileSpeed: 3
+  ShootInterval: 0.15
   PlayerProjectilePrefab: {fileID: 1000011340763166, guid: 46759d9eb2898f64a86c2e4550a899f4,
     type: 2}
 --- !u!4 &2101805454

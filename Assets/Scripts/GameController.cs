@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour
     [Header("Game Balance")]
     public float MoveSpeed = 1.0f;
     public float ProjectileSpeed = 2.0f;
-    public float ShootSpeed = 5.0f;
+    public float ShootInterval = 5.0f;
 
     [Header("Prefabs")]
     public GameObject PlayerProjectilePrefab;
