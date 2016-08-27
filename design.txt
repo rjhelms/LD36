@@ -1,0 +1,17 @@
+top down vertical shooter
+
+character: cat in UFO
+	moves from top to bottom
+	fires lucky charms
+
+object:
+	convert egyptians to cult of cats
+	turn from boring dudes to "walk like an egyptian" character
+	get points for doing it
+
+obstacles:
+	other things shoot back at you - other Egyptian gods?
+
+end of level:
+	egyptians build pyramid based on score
+	minimums to proceed?
