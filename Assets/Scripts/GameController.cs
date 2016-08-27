@@ -15,7 +15,8 @@ public class GameController : MonoBehaviour
     public int PlayerXCoordBoundsMagnitude = 80;
 
     [Header("Game Balance")]
-    public float MoveSpeed = 1.0f;
+    public float MoveSpeedX = 1.0f;
+    public float MoveSpeedY = 1.0f;
     public float ProjectileSpeed = 2.0f;
     public float ShootInterval = 5.0f;
 

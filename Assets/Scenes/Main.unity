@@ -523,8 +523,9 @@ MonoBehaviour:
   TargetY: 200
   PlayerCameraYOffset: 80
   PlayerXCoordBoundsMagnitude: 64
-  MoveSpeed: 5
-  ProjectileSpeed: 3
+  MoveSpeedX: 5
+  MoveSpeedY: 1
+  ProjectileSpeed: 4
   ShootInterval: 0.15
   PlayerProjectilePrefab: {fileID: 1000011340763166, guid: 46759d9eb2898f64a86c2e4550a899f4,
     type: 2}

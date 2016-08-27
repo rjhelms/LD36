@@ -51,8 +51,8 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         float moveInput = Input.GetAxis("Horizontal");
-        int moveMagnitude = Mathf.RoundToInt(moveInput * gameController.MoveSpeed);
-        playerTransform.position += new Vector3(moveMagnitude, 0, 0);
+        int moveMagnitude = Mathf.RoundToInt(moveInput * gameController.MoveSpeedX);
+        playerTransform.position += new Vector3(moveMagnitude, -gameController.MoveSpeedY, 0);
 
         if (Mathf.Abs(playerTransform.position.x) >= gameController.PlayerXCoordBoundsMagnitude)
         {
