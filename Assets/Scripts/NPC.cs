@@ -78,7 +78,8 @@ public class NPC : MonoBehaviour
     {
         if (coll.gameObject.tag == "Bottom")
             HasComeOnScreen = true;
-        else if (coll.gameObject.tag == "Bounds" || coll.gameObject.tag == "NPC")
+        else if (coll.gameObject.tag == "Bounds" || coll.gameObject.tag == "NPC"
+            || coll.gameObject.tag == "AICollision")
         {
             this.transform.localScale = new Vector3(this.transform.localScale.x * -1, 1, 1);
         }

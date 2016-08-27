@@ -30,6 +30,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1000013736815490
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 4000012232421616}
+  - 61: {fileID: 61000012002791310}
+  m_Layer: 0
+  m_Name: AICollision
+  m_TagString: AICollision
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!4 &4000010523076322
 Transform:
   m_ObjectHideFlags: 1
@@ -40,8 +56,22 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
+  m_Children:
+  - {fileID: 4000012232421616}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!4 &4000012232421616
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013736815490}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 4000010523076322}
   m_RootOrder: 0
 --- !u!50 &50000013708591286
 Rigidbody2D:
@@ -74,6 +104,20 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 8}
   serializedVersion: 2
   m_Size: {x: 8, y: 8}
+--- !u!61 &61000012002791310
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013736815490}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 8, y: 24}
 --- !u!114 &114000010974474394
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -92,6 +136,7 @@ MonoBehaviour:
   - {fileID: 21300008, guid: 645a0df632ec88140b9cfbeda21e488f, type: 3}
   - {fileID: 21300010, guid: 645a0df632ec88140b9cfbeda21e488f, type: 3}
   Converted: 0
+  HasComeOnScreen: 0
   AnimateInterval: 0.25
 --- !u!212 &212000014083176888
 SpriteRenderer:
