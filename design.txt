@@ -3,7 +3,14 @@ top down vertical shooter
 character: cat in UFO
 	moves from top to bottom
 	fires lucky charms
-
+		pink hearts
+		yellow moons
+		orange stars
+		green clovers
+		blue diamons
+		purple horseshoes
+		
+		
 object:
 	convert egyptians to cult of cats
 	turn from boring dudes to "walk like an egyptian" character
