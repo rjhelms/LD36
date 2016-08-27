@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Fire! " + projectileSpriteIndex);
                 nextProjectileTime = Time.fixedTime + gameController.ShootInterval;
 
-                Vector3 projectilePosition = new Vector3(playerTransform.position.x, playerTransform.position.y - 8);
+                Vector3 projectilePosition = new Vector3(playerTransform.position.x, playerTransform.position.y - gameController.ProjectileYOffset);
                 GameObject projectile = (GameObject)Instantiate(gameController.PlayerProjectilePrefab,
                     projectilePosition, Quaternion.identity);
 

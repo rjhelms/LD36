@@ -11,9 +11,11 @@ public class GameController : MonoBehaviour
     public int TargetX = 160;
     public int TargetY = 200;
     private float pixelRatioAdjustment;
+
+    [Header("Position Offsets")]
     public int PlayerCameraYOffset = 120;
     public int PlayerXCoordBoundsMagnitude = 80;
-
+    public int ProjectileYOffset = 12;
     [Header("Game Balance")]
     public float MoveSpeedX = 1.0f;
     public float MoveSpeedY = 1.0f;
