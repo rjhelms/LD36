@@ -4,8 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Bounds
+  - Bottom
   - NPC
+  - Bounds
   layers:
   - Default
   - TransparentFX

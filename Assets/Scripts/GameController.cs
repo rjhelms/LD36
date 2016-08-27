@@ -16,11 +16,13 @@ public class GameController : MonoBehaviour
     public int PlayerCameraYOffset = 120;
     public int PlayerXCoordBoundsMagnitude = 80;
     public int ProjectileYOffset = 12;
+
     [Header("Game Balance")]
     public float MoveSpeedX = 1.0f;
     public float MoveSpeedY = 1.0f;
     public float ProjectileSpeed = 2.0f;
     public float ShootInterval = 5.0f;
+    public float NPCWalkSpeed = 1.0f;
 
     [Header("Prefabs")]
     public GameObject PlayerProjectilePrefab;

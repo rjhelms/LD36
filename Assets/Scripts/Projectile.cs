@@ -19,9 +19,9 @@ public class Projectile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.gameObject.tag == "Bounds")
+        if (coll.gameObject.tag == "Bottom")
         {
-            Debug.Log("Collided with bounds");
+            Debug.Log("Collided with bottom bounds");
 
             /* 
              * Disable the collider, and destroy it a second later.
