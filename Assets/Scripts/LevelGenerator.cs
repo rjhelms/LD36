@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 
 enum RiverPiece
@@ -14,6 +15,13 @@ public class LevelGenerator : MonoBehaviour
 {
 
     public GameObject[] RiverPrefabs;
+    public GameObject LevelEndPrefab;
+    public GameObject[] FriendlyPrefabs;
+    public GameObject[] EnemyPrefabs;
+
+    public int FriendlyCount;
+    public int[] EnemyCounts;
+
     public GameController gameController;
 
     public int LevelLengthFactor = 50;
@@ -27,9 +35,22 @@ public class LevelGenerator : MonoBehaviour
     public int RiverMinWidth = 2;
 
     public Transform TerrainTransform;
+    public Transform NPCTransform;
 
     private int targetLength = 0;
     private int screenTileXSize;
+    private int minNPCYCoord;
+    private int maxNPCYCoord;
+
+    private bool generateRiverRunning = false;
+    private bool generateFriendliesRunning = false;
+    private bool generateEnemiesRunning = false;
+
+    private bool generateRiverDone = false;
+    private bool generateFriendliesDone = false;
+    private bool generateEnemiesDone = false;
+    private bool generationDone = false;
+
     // Use this for initialization
     void Start()
     {
@@ -41,17 +62,33 @@ public class LevelGenerator : MonoBehaviour
         screenTileXSize = gameController.TargetX / TileSize;
         Debug.Log("World is " + screenTileXSize + " tiles wide");
         Debug.Log("Screen is " + gameController.TargetY / TileSize + " units tall");
-        generateRiver();
-
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (!generateRiverRunning && !generateRiverDone)
+        {
+            generateRiverRunning = true;
+            Debug.Log("Generating river");
+            StartCoroutine("generateRiver");
+        }
+        else if (generateRiverDone && !generateFriendliesRunning && !generateFriendliesDone)
+        {
+            generateFriendliesRunning = true;
+            generateEnemiesRunning = true;
+            Debug.Log("Placing NPCs");
+            StartCoroutine("generateFriendlies");
+            StartCoroutine("generateEnemies");
+        }
+        else if (generateRiverDone && generateFriendliesDone && generateEnemiesDone && !generationDone)
+        {
+            generationDone = true;
+            gameController.IsRunning = true;
+        }
     }
 
-    private void generateRiver()
+    IEnumerator generateRiver()
     {
         int currentY = 0;
         int currentX = 0;
@@ -76,21 +113,21 @@ public class LevelGenerator : MonoBehaviour
                 {
                     if (tileX == currentX)
                     {
-                        Instantiate(RiverPrefabs[(int)RiverPiece.SW], TileCoordToPosition(tileX, currentY), Quaternion.identity, TerrainTransform);
+                        Instantiate(RiverPrefabs[(int)RiverPiece.SW], tileCoordToPosition(tileX, currentY), Quaternion.identity, TerrainTransform);
                     }
                     else if (tileX != currentX && Mathf.Abs(currentX - tileX) < RiverWidth)
                     {
-                        Instantiate(RiverPrefabs[(int)RiverPiece.FULL], TileCoordToPosition(tileX, currentY), Quaternion.identity, TerrainTransform);
+                        Instantiate(RiverPrefabs[(int)RiverPiece.FULL], tileCoordToPosition(tileX, currentY), Quaternion.identity, TerrainTransform);
                     }
                     else
                     {
-                        Instantiate(RiverPrefabs[(int)RiverPiece.NE], TileCoordToPosition(tileX, currentY), Quaternion.identity, TerrainTransform);
+                        Instantiate(RiverPrefabs[(int)RiverPiece.NE], tileCoordToPosition(tileX, currentY), Quaternion.identity, TerrainTransform);
                     }
                     tileX--;
                 }
                 currentX++;
                 currentY++;
-
+                yield return null;
             }
 
             lastRowX = targetLeadingEdge - RiverWidth;
@@ -108,23 +145,26 @@ public class LevelGenerator : MonoBehaviour
                 {
                     if (tileX == currentX)
                     {
-                        Instantiate(RiverPrefabs[(int)RiverPiece.SE], TileCoordToPosition(tileX, currentY), Quaternion.identity, TerrainTransform);
+                        Instantiate(RiverPrefabs[(int)RiverPiece.SE], tileCoordToPosition(tileX, currentY), Quaternion.identity, TerrainTransform);
                     }
                     else if (tileX != currentX && Mathf.Abs(currentX - tileX) < RiverWidth)
                     {
-                        Instantiate(RiverPrefabs[(int)RiverPiece.FULL], TileCoordToPosition(tileX, currentY), Quaternion.identity, TerrainTransform);
+                        Instantiate(RiverPrefabs[(int)RiverPiece.FULL], tileCoordToPosition(tileX, currentY), Quaternion.identity, TerrainTransform);
                     }
                     else
                     {
-                        Instantiate(RiverPrefabs[(int)RiverPiece.NW], TileCoordToPosition(tileX, currentY), Quaternion.identity, TerrainTransform);
+                        Instantiate(RiverPrefabs[(int)RiverPiece.NW], tileCoordToPosition(tileX, currentY), Quaternion.identity, TerrainTransform);
                     }
                     tileX++;
                 }
                 currentX--;
                 currentY++;
+                yield return null;
             }
             lastRowX = targetLeadingEdge + 1;   // TODO: why plus one?
         }
+
+        minNPCYCoord = currentY;
 
         // generate main river section
 
@@ -193,16 +233,16 @@ public class LevelGenerator : MonoBehaviour
             // create left bank
             if (currentRowX < lastRowX)
             {
-                Instantiate(RiverPrefabs[(int)RiverPiece.SE], TileCoordToPosition(currentRowX, currentY), Quaternion.identity, TerrainTransform);
+                Instantiate(RiverPrefabs[(int)RiverPiece.SE], tileCoordToPosition(currentRowX, currentY), Quaternion.identity, TerrainTransform);
             }
             else if (currentRowX > lastRowX)
             {
-                Instantiate(RiverPrefabs[(int)RiverPiece.NE], TileCoordToPosition(currentRowX - 1, currentY), Quaternion.identity, TerrainTransform);
-                Instantiate(RiverPrefabs[(int)RiverPiece.FULL], TileCoordToPosition(currentRowX, currentY), Quaternion.identity, TerrainTransform);
+                Instantiate(RiverPrefabs[(int)RiverPiece.NE], tileCoordToPosition(currentRowX - 1, currentY), Quaternion.identity, TerrainTransform);
+                Instantiate(RiverPrefabs[(int)RiverPiece.FULL], tileCoordToPosition(currentRowX, currentY), Quaternion.identity, TerrainTransform);
             }
             else if (currentRowX == lastRowX)
             {
-                Instantiate(RiverPrefabs[(int)RiverPiece.FULL], TileCoordToPosition(currentRowX, currentY), Quaternion.identity, TerrainTransform);
+                Instantiate(RiverPrefabs[(int)RiverPiece.FULL], tileCoordToPosition(currentRowX, currentY), Quaternion.identity, TerrainTransform);
             }
             else
             {
@@ -215,16 +255,16 @@ public class LevelGenerator : MonoBehaviour
             Debug.Log("currentRowRightBank: " + currentRowRightBank);
             if (currentRowRightBank < lastRowRightBank)
             {
-                Instantiate(RiverPrefabs[(int)RiverPiece.NW], TileCoordToPosition(currentRowRightBank + 1, currentY), Quaternion.identity, TerrainTransform);
-                Instantiate(RiverPrefabs[(int)RiverPiece.FULL], TileCoordToPosition(currentRowRightBank, currentY), Quaternion.identity, TerrainTransform);
+                Instantiate(RiverPrefabs[(int)RiverPiece.NW], tileCoordToPosition(currentRowRightBank + 1, currentY), Quaternion.identity, TerrainTransform);
+                Instantiate(RiverPrefabs[(int)RiverPiece.FULL], tileCoordToPosition(currentRowRightBank, currentY), Quaternion.identity, TerrainTransform);
             }
             else if (currentRowRightBank > lastRowRightBank)
             {
-                Instantiate(RiverPrefabs[(int)RiverPiece.SW], TileCoordToPosition(currentRowRightBank, currentY), Quaternion.identity, TerrainTransform);
+                Instantiate(RiverPrefabs[(int)RiverPiece.SW], tileCoordToPosition(currentRowRightBank, currentY), Quaternion.identity, TerrainTransform);
             }
             else if (currentRowRightBank == lastRowRightBank)
             {
-                Instantiate(RiverPrefabs[(int)RiverPiece.FULL], TileCoordToPosition(currentRowRightBank, currentY), Quaternion.identity, TerrainTransform);
+                Instantiate(RiverPrefabs[(int)RiverPiece.FULL], tileCoordToPosition(currentRowRightBank, currentY), Quaternion.identity, TerrainTransform);
             }
             else
             {
@@ -233,15 +273,18 @@ public class LevelGenerator : MonoBehaviour
             // fill in
             for (int i = currentRowX + 1; i < currentRowRightBank; i++)
             {
-                Instantiate(RiverPrefabs[(int)RiverPiece.FULL], TileCoordToPosition(i, currentY), Quaternion.identity, TerrainTransform);
+                Instantiate(RiverPrefabs[(int)RiverPiece.FULL], tileCoordToPosition(i, currentY), Quaternion.identity, TerrainTransform);
             }
             // increment currentY and shift X and width variables
             lastRowX = currentRowX;
             lastRowWidth = currentRowWidth;
             currentY++;
+            yield return null;
         }
 
+        maxNPCYCoord = currentY;
         // generate river exit section
+
         if (direction < 0.0f)
         {
             currentRowX += currentRowWidth;
@@ -254,21 +297,21 @@ public class LevelGenerator : MonoBehaviour
                 {
                     if (tileX == currentRowX)
                     {
-                        Instantiate(RiverPrefabs[(int)RiverPiece.SW], TileCoordToPosition(tileX, currentY), Quaternion.identity, TerrainTransform);
+                        Instantiate(RiverPrefabs[(int)RiverPiece.SW], tileCoordToPosition(tileX, currentY), Quaternion.identity, TerrainTransform);
                     }
                     else if (tileX != currentRowX && Mathf.Abs(currentRowX - tileX) < currentRowWidth)
                     {
-                        Instantiate(RiverPrefabs[(int)RiverPiece.FULL], TileCoordToPosition(tileX, currentY), Quaternion.identity, TerrainTransform);
+                        Instantiate(RiverPrefabs[(int)RiverPiece.FULL], tileCoordToPosition(tileX, currentY), Quaternion.identity, TerrainTransform);
                     }
                     else
                     {
-                        Instantiate(RiverPrefabs[(int)RiverPiece.NE], TileCoordToPosition(tileX, currentY), Quaternion.identity, TerrainTransform);
+                        Instantiate(RiverPrefabs[(int)RiverPiece.NE], tileCoordToPosition(tileX, currentY), Quaternion.identity, TerrainTransform);
                     }
                     tileX--;
                 }
                 currentRowX++;
                 currentY++;
-
+                yield return null;
             }
         }
         else
@@ -283,30 +326,113 @@ public class LevelGenerator : MonoBehaviour
                 {
                     if (tileX == currentRowX)
                     {
-                        Instantiate(RiverPrefabs[(int)RiverPiece.SE], TileCoordToPosition(tileX, currentY), Quaternion.identity, TerrainTransform);
+                        Instantiate(RiverPrefabs[(int)RiverPiece.SE], tileCoordToPosition(tileX, currentY), Quaternion.identity, TerrainTransform);
                     }
                     else if (tileX != currentRowX && Mathf.Abs(currentRowX - tileX) < currentRowWidth)
                     {
-                        Instantiate(RiverPrefabs[(int)RiverPiece.FULL], TileCoordToPosition(tileX, currentY), Quaternion.identity, TerrainTransform);
+                        Instantiate(RiverPrefabs[(int)RiverPiece.FULL], tileCoordToPosition(tileX, currentY), Quaternion.identity, TerrainTransform);
                     }
                     else
                     {
-                        Instantiate(RiverPrefabs[(int)RiverPiece.NW], TileCoordToPosition(tileX, currentY), Quaternion.identity, TerrainTransform);
+                        Instantiate(RiverPrefabs[(int)RiverPiece.NW], tileCoordToPosition(tileX, currentY), Quaternion.identity, TerrainTransform);
                     }
                     tileX++;
                 }
                 currentRowX--;
                 currentY++;
+                yield return null;
             }
         }
+        Instantiate(LevelEndPrefab, new Vector3(0, StartY - (currentY * TileSize), 5), Quaternion.identity, TerrainTransform);
+        generateRiverRunning = false;
+        generateRiverDone = true;
     }
 
-    private Vector3 TileCoordToPosition(int x, int y)
+    IEnumerator generateFriendlies()
+    {
+        int count = 0;
+        while (count < FriendlyCount)
+        {
+            bool hasPlacedFriendly = false;
+            while (!hasPlacedFriendly)
+            {
+                int friendlyX = Random.Range(1, screenTileXSize - 1);
+                int friendlyY = Random.Range(minNPCYCoord, maxNPCYCoord);
+                Vector3 friendlyPositionVector = tileCoordToPosition(friendlyX, friendlyY, 3);
+                Collider2D[] collisions = Physics2D.OverlapCircleAll((Vector2)friendlyPositionVector, 8);
+                if (collisions.Length == 0)
+                {
+                    int prefabIndex = Random.Range(0, FriendlyPrefabs.Length);
+                    GameObject newFriendly = (GameObject)Instantiate(FriendlyPrefabs[prefabIndex], friendlyPositionVector, Quaternion.identity, NPCTransform);
+                    if (Random.value < 0.5f)
+                    {
+                        newFriendly.transform.localScale = new Vector3(-1, 1, 1);
+                    }
+                    hasPlacedFriendly = true;
+                }
+                else
+                {
+                    yield return null;
+                }
+            }
+            count++;
+            yield return null;
+        }
+        generateFriendliesRunning = false;
+        generateFriendliesDone = true;
+    }
+
+    IEnumerator generateEnemies()
+    {
+        for (int i = 0; i < EnemyCounts.Length; i++)
+        {
+            int count = 0;
+            while (count < EnemyCounts[i])
+            {
+                bool hasPlacedEnemy = false;
+                while (!hasPlacedEnemy)
+                {
+                    int EnemyX = Random.Range(1, screenTileXSize - 1);
+                    int EnemyY = Random.Range(minNPCYCoord, maxNPCYCoord);
+                    Vector3 enemyPositionVector = tileCoordToPosition(EnemyX, EnemyY, 3);
+                    Collider2D[] collisions = Physics2D.OverlapCircleAll((Vector2)enemyPositionVector, 8);
+                    if (collisions.Length == 0)
+                    {
+                        GameObject newEnemy = (GameObject)Instantiate(EnemyPrefabs[i], enemyPositionVector, Quaternion.identity, NPCTransform);
+                        if (Random.value < 0.5f)
+                        {
+                            newEnemy.transform.localScale = new Vector3(-1, 1, 1);
+                        }
+                        hasPlacedEnemy = true;
+                    }
+                    else
+                    {
+                        yield return null;
+                    }
+                }
+                count++;
+                yield return null;
+            }
+        }
+        generateEnemiesRunning = false;
+        generateEnemiesDone = true;
+    }
+
+    private Vector3 tileCoordToPosition(int x, int y)
     {
         int worldX = x * TileSize - (gameController.TargetX / 2);
         int worldY = StartY - y * TileSize;
 
         worldX += TileSize / 2;
         return new Vector3(worldX, worldY, 5);
+    }
+
+    private Vector3 tileCoordToPosition(int x, int y, float z)
+    {
+        int worldX = x * TileSize - (gameController.TargetX / 2);
+        int worldY = StartY - y * TileSize;
+
+        worldX += TileSize / 2;
+        return new Vector3(worldX, worldY, z);
     }
 }

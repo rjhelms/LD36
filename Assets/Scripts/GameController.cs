@@ -52,7 +52,6 @@ public class GameController : MonoBehaviour
             RenderTexture.mainTextureOffset = new Vector2(0, (1 - pixelRatioAdjustment) / 2);
             WorldCamera.orthographicSize = TargetX / 2;
         }
-        this.IsRunning = true;
     }
 
     // Update is called once per frame
@@ -72,5 +71,10 @@ public class GameController : MonoBehaviour
     {
         IsRunning = false;
         Debug.Log("lost");
+    }
+
+    public void LevelClear()
+    {
+        IsRunning = false;
     }
 }

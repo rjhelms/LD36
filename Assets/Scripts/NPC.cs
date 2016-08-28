@@ -11,6 +11,7 @@ public class NPC : MonoBehaviour
     public bool Converted;
     public bool HasComeOnScreen;
     public float AnimateInterval;
+    public bool PlaceInWater = false;
 
     protected int SpriteState;
     protected float nextSpriteChange;
@@ -63,7 +64,7 @@ public class NPC : MonoBehaviour
         if (coll.gameObject.tag == "Bottom")
             HasComeOnScreen = true;
         else if (coll.gameObject.tag == "Bounds" || coll.gameObject.tag == "NPC"
-            || coll.gameObject.tag == "AICollision")
+            || coll.gameObject.tag == "AICollision" || coll.gameObject.tag == "Terrain")
         {
             this.transform.localScale = new Vector3(this.transform.localScale.x * -1, 1, 1);
         }
@@ -71,10 +72,13 @@ public class NPC : MonoBehaviour
 
     public void Hit()
     {
-        Converted = true;
-        this.GetComponent<BoxCollider2D>().enabled = false;
-        spriteRenderer.sprite = ConvertedSprites[SpriteState];
-        nextSpriteChange = Time.time + AnimateInterval;
+        if (HasComeOnScreen)
+        {
+            Converted = true;
+            this.GetComponent<BoxCollider2D>().enabled = false;
+            spriteRenderer.sprite = ConvertedSprites[SpriteState];
+            nextSpriteChange = Time.time + AnimateInterval;
+        }
     }
 
     protected void Wander()

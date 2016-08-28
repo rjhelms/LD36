@@ -91,4 +91,12 @@ public class PlayerController : MonoBehaviour
             gameController.Lose();
         }
     }
+
+    void OnTriggerEnter2D(Collider2D coll)
+    {
+        if (coll.gameObject.tag == "LevelEnd")
+        {
+            gameController.LevelClear();
+        }
+    }
 }

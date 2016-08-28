@@ -364,7 +364,7 @@ Transform:
   - {fileID: 1484616442}
   - {fileID: 1509823301}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!114 &400307488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,6 +391,34 @@ MonoBehaviour:
   noiseTexture: {fileID: 2800000, guid: 7a632f967e8ad42f5bd275898151ab6a, type: 3}
   noiseShader: {fileID: 4800000, guid: b0249d8c935344451aa4de6db76f0688, type: 3}
   dx11NoiseShader: {fileID: 4800000, guid: 8b30686bb4322ab42ad5eb50a0210b58, type: 3}
+--- !u!1 &530023167
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 530023168}
+  m_Layer: 0
+  m_Name: NPCs
+  m_TagString: NPC
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &530023168
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 530023167}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
 --- !u!1 &583459793
 GameObject:
   m_ObjectHideFlags: 0
@@ -543,7 +571,7 @@ Transform:
   - {fileID: 1241872871}
   - {fileID: 1672054787}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
 --- !u!114 &587741891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -665,6 +693,15 @@ MonoBehaviour:
   - {fileID: 1000010281366954, guid: 8ad8281318a379d41b4adc3fbf54c97a, type: 2}
   - {fileID: 1000011826230052, guid: 6657a3a057267714e846c5a634546cc9, type: 2}
   - {fileID: 1000011421103258, guid: 2f4992597f985994b840956a9c60b813, type: 2}
+  LevelEndPrefab: {fileID: 1000013207642722, guid: ef7cdc8931527844689f04d1935895a2,
+    type: 2}
+  FriendlyPrefabs:
+  - {fileID: 1000011195000638, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
+  - {fileID: 1000011943773284, guid: 250278c8e91e5454f910b35ae414726e, type: 2}
+  EnemyPrefabs:
+  - {fileID: 1000010657226992, guid: 1f95cbf6c1a22e74cb7724cd7006c4f6, type: 2}
+  FriendlyCount: 10
+  EnemyCounts: 05000000
   gameController: {fileID: 0}
   LevelLengthFactor: 50
   StartY: -100
@@ -675,6 +712,7 @@ MonoBehaviour:
   RiverMaxWidth: 6
   RiverMinWidth: 2
   TerrainTransform: {fileID: 184703564}
+  NPCTransform: {fileID: 530023168}
 --- !u!1 &1129445797
 GameObject:
   m_ObjectHideFlags: 0
@@ -886,7 +924,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!114 &1433320436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1216,7 +1254,7 @@ Transform:
   m_Children:
   - {fileID: 218363108}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!114 &1556617548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1361,8 +1399,8 @@ MonoBehaviour:
   UICanvasTransform: {fileID: 218363108}
   UIHitPointPanelTransform: {fileID: 1129445798}
   MoveSpeedX: 5
-  MoveSpeedY: 1
-  ProjectileSpeed: 4
+  MoveSpeedY: 2
+  ProjectileSpeed: 5
   ShootInterval: 0.15
   NPCWalkSpeed: 1
   NPCBaseStateChangeTime: 0.25
@@ -1382,4 +1420,4 @@ Transform:
   m_Children:
   - {fileID: 1085014607}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
