@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
@@ -16,6 +17,10 @@ public class GameController : MonoBehaviour
     public int PlayerCameraYOffset = 120;
     public int PlayerXCoordBoundsMagnitude = 80;
     public int ProjectileYOffset = 12;
+
+    [Header("UI Elements")]
+    public Transform UICanvasTransform;
+    public RectTransform UIHitPointPanelTransform;
 
     [Header("Game Balance")]
     public float MoveSpeedX = 1.0f;
@@ -49,10 +54,16 @@ public class GameController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        WorldCamera.transform.position = new Vector3(0, PlayerTransform.position.y - this.PlayerCameraYOffset, -10);
+
     }
 
+    public void UpdateUI()
+    {
+        WorldCamera.transform.position = new Vector3(0, PlayerTransform.position.y - this.PlayerCameraYOffset, -10);
+        UIHitPointPanelTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, ScoreManager.Instance.HitPoints * 16);
+        Canvas.ForceUpdateCanvases();
+    }
 
 }

@@ -73,10 +73,13 @@ public class PlayerController : MonoBehaviour
         {
             playerSpriteRenderer.sprite = SpriteLeft;
         }
+
+        gameController.UpdateUI();
     }
 
     public void Hit()
     {
         Debug.Log("Hit!");
+        ScoreManager.Instance.HitPoints--;
     }
 }
