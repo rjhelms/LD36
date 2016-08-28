@@ -174,10 +174,10 @@ MonoBehaviour:
   - {fileID: 21300034, guid: 645a0df632ec88140b9cfbeda21e488f, type: 3}
   ProjectilePrefab: {fileID: 1000012974705450, guid: 826b6168591398749a3aae7e60938a4a,
     type: 2}
-  StateChangeTimeMultiplier: 1.5
+  StateChangeTimeMultiplier: 1.2
   FireChance: 0.8
   ArrowSpawnPoint: {fileID: 4000013234398950}
-  State: 0
+  State: 1
 --- !u!212 &212000012781652168
 SpriteRenderer:
   m_ObjectHideFlags: 1
