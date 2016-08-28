@@ -71,15 +71,15 @@ public class LevelGenerator : MonoBehaviour
         {
             generateRiverRunning = true;
             Debug.Log("Generating river");
-            StartCoroutine("generateRiver");
+            StartCoroutine(generateRiver());
         }
         else if (generateRiverDone && !generateFriendliesRunning && !generateFriendliesDone)
         {
             generateFriendliesRunning = true;
             generateEnemiesRunning = true;
             Debug.Log("Placing NPCs");
-            StartCoroutine("generateFriendlies");
-            StartCoroutine("generateEnemies");
+            StartCoroutine(generateFriendlies());
+            StartCoroutine(generateEnemies());
         }
         else if (generateRiverDone && generateFriendliesDone && generateEnemiesDone && !generationDone)
         {
