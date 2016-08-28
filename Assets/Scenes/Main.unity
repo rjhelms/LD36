@@ -324,7 +324,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.909804, g: 0.94117653, b: 0.47450984, a: 0}
+  m_BackGroundColor: {r: 0.93333334, g: 0.93333334, b: 0.46666667, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -1559,6 +1559,15 @@ MonoBehaviour:
   PlayerHitSound: {fileID: 8300000, guid: 95407b4ae48233b4c8c95f5c62f5f8c5, type: 3}
   PlayerLoseSound: {fileID: 8300000, guid: 7816d62ca5a44be4b9aabd6236544e96, type: 3}
   NPCConvertedSound: {fileID: 8300000, guid: 7c81911036c44d54a83821141c1b2cd5, type: 3}
+  PyramidBuildSound: {fileID: 8300000, guid: eed684c254a12ff49b089e664e7fa75f, type: 3}
+  WinState: 0
+  PyramidBuilderPrefab: {fileID: 1000012168488106, guid: 9230e04635a5d0f44824641d0166c66b,
+    type: 2}
+  PyramidTilePrefabs:
+  - {fileID: 1000012852594668, guid: 27edb0ad41fb2194faaab5ede533d13c, type: 2}
+  - {fileID: 1000012065534244, guid: f247909df0f3adc449279e35f84dbbcc, type: 2}
+  - {fileID: 1000012291770440, guid: eef70b7ddd4bc0946991bbaec206f7ca, type: 2}
+  currentPyramidRow: []
 --- !u!4 &2101805454
 Transform:
   m_ObjectHideFlags: 0
