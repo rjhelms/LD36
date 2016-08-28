@@ -710,25 +710,25 @@ MonoBehaviour:
   LevelLengthM: 25
   LevelLengthA: 0
   LevelLengthB: 0
-  LevelLengthC: 25
-  FriendliesM: 4.83
-  FriendliesA: -0.0131
-  FriendliesB: 0.127
-  FriendliesC: 5.05
+  LevelLengthC: 15
+  FriendliesM: 8.52
+  FriendliesA: 0
+  FriendliesB: -0.08
+  FriendliesC: 3.56
   FriendliesMin: 5
   FriendliesMax: 75
   EnemiesM:
-  - -1.85
-  - -0.153
+  - 4.12
+  - 0.008
   EnemiesA:
-  - 0.000596
-  - 0.0025
+  - 0.00001
+  - 0.0146
   EnemiesB:
-  - -0.0821
-  - -0.0527
+  - 0.38
+  - -0.304
   EnemiesC:
-  - 3.76
-  - 1.011
+  - 0.51
+  - 3.3
   EnemiesMin: 0200000002000000
   EnemiesMax: 0000000000000000
   StartY: -100
