@@ -27,50 +27,49 @@ class Bowman : NPC
     protected override void Update()
     {
         if (ScoreManager.Instance.GameController.IsRunning)
-        { 
-        if (nextStateChangeTime == null && HasComeOnScreen)
         {
-            nextStateChangeTime = Time.fixedTime + (ScoreManager.Instance.GameController.NPCBaseStateChangeTime * StateChangeTimeMultiplier);
+            if (nextStateChangeTime == null && HasComeOnScreen)
+            {
+                nextStateChangeTime = Time.fixedTime + (ScoreManager.Instance.GameController.NPCBaseStateChangeTime * StateChangeTimeMultiplier);
+            }
         }
-
         if (Converted)
         {
             State = BowmanState.WANDER;
         }
-            switch (State)
-            {
-                case BowmanState.WANDER:
-                    if (this.State == BowmanState.WANDER)
+        switch (State)
+        {
+            case BowmanState.WANDER:
+                if (this.State == BowmanState.WANDER)
+                {
+                    if (Time.time > nextSpriteChange)
                     {
-                        if (Time.time > nextSpriteChange)
+                        SpriteState++;
+                        if (Converted && SpriteState == ConvertedSprites.GetLength(0))
+                            SpriteState = 0;
+                        if (!Converted && SpriteState == UnconvertedSprites.GetLength(0))
+                            SpriteState = 0;
+                        if (Converted)
                         {
-                            SpriteState++;
-                            if (Converted && SpriteState == ConvertedSprites.GetLength(0))
-                                SpriteState = 0;
-                            if (!Converted && SpriteState == UnconvertedSprites.GetLength(0))
-                                SpriteState = 0;
-                            if (Converted)
-                            {
-                                spriteRenderer.sprite = ConvertedSprites[SpriteState];
-                            }
-                            else
-                            {
-                                spriteRenderer.sprite = UnconvertedSprites[SpriteState];
-                            }
-                            nextSpriteChange += AnimateInterval;
+                            spriteRenderer.sprite = ConvertedSprites[SpriteState];
                         }
+                        else
+                        {
+                            spriteRenderer.sprite = UnconvertedSprites[SpriteState];
+                        }
+                        nextSpriteChange += AnimateInterval;
                     }
-                    break;
-                case BowmanState.READY_FIRE:
-                    spriteRenderer.sprite = FiringSprites[0];
-                    break;
-                case BowmanState.FIRE:
-                    spriteRenderer.sprite = FiringSprites[1];
-                    break;
-                case BowmanState.COOLDOWN:
-                    spriteRenderer.sprite = FiringSprites[1];
-                    break;
-            }
+                }
+                break;
+            case BowmanState.READY_FIRE:
+                spriteRenderer.sprite = FiringSprites[0];
+                break;
+            case BowmanState.FIRE:
+                spriteRenderer.sprite = FiringSprites[1];
+                break;
+            case BowmanState.COOLDOWN:
+                spriteRenderer.sprite = FiringSprites[1];
+                break;
         }
     }
 
@@ -117,7 +116,8 @@ class Bowman : NPC
             if (this.transform.position.x > ScoreManager.Instance.GameController.PlayerTransform.position.x)
             {
                 this.transform.localScale = new Vector3(-1, 1, 1);
-            } else if (this.transform.position.x < ScoreManager.Instance.GameController.PlayerTransform.position.x)
+            }
+            else if (this.transform.position.x < ScoreManager.Instance.GameController.PlayerTransform.position.x)
             {
                 this.transform.localScale = new Vector3(1, 1, 1);
             }
