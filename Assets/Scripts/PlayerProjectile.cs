@@ -4,7 +4,10 @@ public class PlayerProjectile : Projectile
 {
     void FixedUpdate()
     {
-        transform.position += new Vector3(0, -gameController.ProjectileSpeed, 0);
+        if (gameController.IsRunning)
+        {
+            transform.position += new Vector3(0, -gameController.ProjectileSpeed, 0);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D coll)

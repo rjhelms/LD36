@@ -27,6 +27,8 @@ class Bowman : NPC
 
     protected override void Update()
     {
+        if (gameController.IsRunning)
+        { 
         if (nextStateChangeTime == null && HasComeOnScreen)
         {
             nextStateChangeTime = Time.fixedTime + (gameController.NPCBaseStateChangeTime * StateChangeTimeMultiplier);
@@ -36,39 +38,40 @@ class Bowman : NPC
         {
             State = BowmanState.WANDER;
         }
-        switch (State)
-        {
-            case BowmanState.WANDER:
-                if (this.State == BowmanState.WANDER)
-                {
-                    if (Time.time > nextSpriteChange)
+            switch (State)
+            {
+                case BowmanState.WANDER:
+                    if (this.State == BowmanState.WANDER)
                     {
-                        SpriteState++;
-                        if (Converted && SpriteState == ConvertedSprites.GetLength(0))
-                            SpriteState = 0;
-                        if (!Converted && SpriteState == UnconvertedSprites.GetLength(0))
-                            SpriteState = 0;
-                        if (Converted)
+                        if (Time.time > nextSpriteChange)
                         {
-                            spriteRenderer.sprite = ConvertedSprites[SpriteState];
+                            SpriteState++;
+                            if (Converted && SpriteState == ConvertedSprites.GetLength(0))
+                                SpriteState = 0;
+                            if (!Converted && SpriteState == UnconvertedSprites.GetLength(0))
+                                SpriteState = 0;
+                            if (Converted)
+                            {
+                                spriteRenderer.sprite = ConvertedSprites[SpriteState];
+                            }
+                            else
+                            {
+                                spriteRenderer.sprite = UnconvertedSprites[SpriteState];
+                            }
+                            nextSpriteChange += AnimateInterval;
                         }
-                        else
-                        {
-                            spriteRenderer.sprite = UnconvertedSprites[SpriteState];
-                        }
-                        nextSpriteChange += AnimateInterval;
                     }
-                }
-                break;
-            case BowmanState.READY_FIRE:
-                spriteRenderer.sprite = FiringSprites[0];
-                break;
-            case BowmanState.FIRE:
-                spriteRenderer.sprite = FiringSprites[1];
-                break;
-            case BowmanState.COOLDOWN:
-                spriteRenderer.sprite = FiringSprites[1];
-                break;
+                    break;
+                case BowmanState.READY_FIRE:
+                    spriteRenderer.sprite = FiringSprites[0];
+                    break;
+                case BowmanState.FIRE:
+                    spriteRenderer.sprite = FiringSprites[1];
+                    break;
+                case BowmanState.COOLDOWN:
+                    spriteRenderer.sprite = FiringSprites[1];
+                    break;
+            }
         }
     }
 

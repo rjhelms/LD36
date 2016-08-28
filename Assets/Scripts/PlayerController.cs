@@ -28,58 +28,67 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButton("Fire1"))
+        if (gameController.IsRunning)
         {
-            if (Time.fixedTime > nextProjectileTime)
+            if (Input.GetButton("Fire1"))
             {
-                Debug.Log("Fire! " + projectileSpriteIndex);
-                nextProjectileTime = Time.fixedTime + gameController.ShootInterval;
+                if (Time.fixedTime > nextProjectileTime)
+                {
+                    Debug.Log("Fire! " + projectileSpriteIndex);
+                    nextProjectileTime = Time.fixedTime + gameController.ShootInterval;
 
-                Vector3 projectilePosition = new Vector3(playerTransform.position.x, playerTransform.position.y - gameController.ProjectileYOffset);
-                GameObject projectile = (GameObject)Instantiate(gameController.PlayerProjectilePrefab,
-                    projectilePosition, Quaternion.identity);
+                    Vector3 projectilePosition = new Vector3(playerTransform.position.x, playerTransform.position.y - gameController.ProjectileYOffset);
+                    GameObject projectile = (GameObject)Instantiate(gameController.PlayerProjectilePrefab,
+                        projectilePosition, Quaternion.identity);
 
-                projectile.GetComponent<SpriteRenderer>().sprite = ProjectileSprites[projectileSpriteIndex];
+                    projectile.GetComponent<SpriteRenderer>().sprite = ProjectileSprites[projectileSpriteIndex];
 
-                projectileSpriteIndex++;
-                if (projectileSpriteIndex == ProjectileSprites.GetLength(0))
-                    projectileSpriteIndex = 0;
+                    projectileSpriteIndex++;
+                    if (projectileSpriteIndex == ProjectileSprites.GetLength(0))
+                        projectileSpriteIndex = 0;
+                }
             }
         }
     }
 
     void FixedUpdate()
     {
-        float moveInput = Input.GetAxis("Horizontal");
-        int moveMagnitude = Mathf.RoundToInt(moveInput * gameController.MoveSpeedX);
-        playerTransform.position += new Vector3(moveMagnitude, -gameController.MoveSpeedY, 0);
-
-        if (Mathf.Abs(playerTransform.position.x) >= gameController.PlayerXCoordBoundsMagnitude)
+        if (gameController.IsRunning)
         {
+            float moveInput = Input.GetAxis("Horizontal");
+            int moveMagnitude = Mathf.RoundToInt(moveInput * gameController.MoveSpeedX);
+            playerTransform.position += new Vector3(moveMagnitude, -gameController.MoveSpeedY, 0);
 
-            if (playerTransform.position.x < 0)
+            if (Mathf.Abs(playerTransform.position.x) >= gameController.PlayerXCoordBoundsMagnitude)
             {
-                playerTransform.position = new Vector3(-gameController.PlayerXCoordBoundsMagnitude, playerTransform.position.y);
-            } else
+
+                if (playerTransform.position.x < 0)
+                {
+                    playerTransform.position = new Vector3(-gameController.PlayerXCoordBoundsMagnitude, playerTransform.position.y);
+                }
+                else
+                {
+                    playerTransform.position = new Vector3(gameController.PlayerXCoordBoundsMagnitude, playerTransform.position.y);
+                }
+            }
+            if (moveMagnitude > 0)
             {
-                playerTransform.position = new Vector3(gameController.PlayerXCoordBoundsMagnitude, playerTransform.position.y);
+                playerSpriteRenderer.sprite = SpriteRight;
+            }
+            else if (moveMagnitude < 0)
+            {
+                playerSpriteRenderer.sprite = SpriteLeft;
             }
         }
-        if (moveMagnitude > 0)
-        {
-            playerSpriteRenderer.sprite = SpriteRight;
-        }
-        else if (moveMagnitude < 0)
-        {
-            playerSpriteRenderer.sprite = SpriteLeft;
-        }
-
-        gameController.UpdateUI();
     }
 
     public void Hit()
     {
         Debug.Log("Hit!");
         ScoreManager.Instance.HitPoints--;
+        if (ScoreManager.Instance.HitPoints == 0)
+        {
+            gameController.Lose();
+        }
     }
 }

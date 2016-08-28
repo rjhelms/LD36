@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour
     public Material RenderTexture;
     public Camera WorldCamera;
     public Transform PlayerTransform;
+    public bool IsRunning;
 
     [Header("Resolution and Display")]
     public int TargetX = 160;
@@ -51,12 +52,13 @@ public class GameController : MonoBehaviour
             RenderTexture.mainTextureOffset = new Vector2(0, (1 - pixelRatioAdjustment) / 2);
             WorldCamera.orthographicSize = TargetX / 2;
         }
+        this.IsRunning = true;
     }
 
     // Update is called once per frame
     void LateUpdate()
     {
-
+        UpdateUI();
     }
 
     public void UpdateUI()
@@ -66,4 +68,9 @@ public class GameController : MonoBehaviour
         Canvas.ForceUpdateCanvases();
     }
 
+    public void Lose()
+    {
+        IsRunning = false;
+        Debug.Log("lost");
+    }
 }

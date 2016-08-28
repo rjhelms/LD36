@@ -30,30 +30,31 @@ public class NPC : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
-        if (Time.time > nextSpriteChange)
+        if (gameController.IsRunning)
         {
-            SpriteState++;
-            if (Converted && SpriteState == ConvertedSprites.GetLength(0))
-                SpriteState = 0;
-            if (!Converted && SpriteState == UnconvertedSprites.GetLength(0))
-                SpriteState = 0;
-            if (Converted)
+            if (Time.time > nextSpriteChange)
             {
-                spriteRenderer.sprite = ConvertedSprites[SpriteState];
+                SpriteState++;
+                if (Converted && SpriteState == ConvertedSprites.GetLength(0))
+                    SpriteState = 0;
+                if (!Converted && SpriteState == UnconvertedSprites.GetLength(0))
+                    SpriteState = 0;
+                if (Converted)
+                {
+                    spriteRenderer.sprite = ConvertedSprites[SpriteState];
+                }
+                else
+                {
+                    spriteRenderer.sprite = UnconvertedSprites[SpriteState];
+                }
+                nextSpriteChange += AnimateInterval;
             }
-            else
-            {
-                spriteRenderer.sprite = UnconvertedSprites[SpriteState];
-            }
-            nextSpriteChange += AnimateInterval;
-
         }
     }
 
     void FixedUpdate()
     {
-
-        if (HasComeOnScreen && !Converted)
+        if (gameController.IsRunning && HasComeOnScreen && !Converted)
             this.DoFrameAction();
     }
 
