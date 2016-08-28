@@ -139,7 +139,7 @@ MonoBehaviour:
   HasComeOnScreen: 0
   AnimateInterval: 0.25
   PlaceInWater: 0
-  PointsValue: 100
+  PointsValue: 0
 --- !u!212 &212000013598158412
 SpriteRenderer:
   m_ObjectHideFlags: 1
