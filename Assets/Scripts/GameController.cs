@@ -7,7 +7,6 @@ public enum PyramidConstructionState
     UFO_CLEAR,
     BUILDING,
     RETURN,
-    DANCE,
     DONE
 }
 
@@ -245,6 +244,10 @@ public class GameController : MonoBehaviour
                     pyramidBuilder.GetComponent<NPC>().AnimateInterval = 0.25f;
                     if (pyramidSize == 10)
                     {
+                        pyramidBuilder.transform.localScale *= 4;
+                    }
+                    else if (pyramidSize > 8)
+                    {
                         pyramidBuilder.transform.localScale *= 3;
                     }
                     else if (pyramidSize > 6)
@@ -254,7 +257,10 @@ public class GameController : MonoBehaviour
                     WinState++;
                 }
                 break;
-
+            case PyramidConstructionState.DONE:
+                if (Input.GetButtonDown("Fire1"))
+                    SceneManager.LoadScene("Main");
+                break;
         }
     }
 }
