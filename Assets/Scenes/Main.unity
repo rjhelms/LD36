@@ -740,8 +740,8 @@ MonoBehaviour:
   StartY: -100
   RiverWidth: 4
   TileSize: 16
-  RiverSinuosity: 0.2
-  RiverWidthChangeChance: 0.25
+  RiverSinuosity: 0.3
+  RiverWidthChangeChance: 0.35
   RiverMaxWidth: 6
   RiverMinWidth: 2
   TerrainTransform: {fileID: 184703564}
@@ -1718,6 +1718,8 @@ MonoBehaviour:
   PlayerSpriteRenderer: {fileID: 1433320434}
   IsRunning: 0
   IsWinning: 0
+  IsLosing: 0
+  IsGameOver: 0
   TargetX: 160
   TargetY: 200
   PlayerCameraYOffset: 80
@@ -1738,6 +1740,7 @@ MonoBehaviour:
   PyramidTilePoints: 5
   PotentialPoints: 0
   HitPointGainThreshhold: 2000
+  HitPointMultiplier: 1.1
   OneUpThreshhold: 5000
   OneUpMultiplier: 2
   HitImmunityTime: 1.5

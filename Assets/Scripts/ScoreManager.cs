@@ -15,4 +15,5 @@ public class ScoreManager : Singleton<ScoreManager>
 
     public int NextHitPoint = 0;
     public int NextOneUp = 0;
+    public int HitPointThreshholdIncrease = 0;
 }
