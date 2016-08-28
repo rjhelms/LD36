@@ -191,10 +191,19 @@ public class GameController : MonoBehaviour
     }
     public void Lose()
     {
-        IsRunning = false;
-        audioSource.pitch = Random.Range(0.95f, 1.05f);
-        audioSource.PlayOneShot(PlayerLoseSound);
-        Debug.Log("lost");
+        ScoreManager.Instance.Lives--;
+        if (ScoreManager.Instance.Lives >= 0)
+        {
+            ScoreManager.Instance.HitPoints = 3;
+            SceneManager.LoadScene("Main");
+        }
+        else
+        {
+            IsRunning = false;
+            audioSource.pitch = Random.Range(0.95f, 1.05f);
+            audioSource.PlayOneShot(PlayerLoseSound);
+            Debug.Log("lost");
+        }
     }
 
     public void LevelClear()
