@@ -476,11 +476,11 @@ public class LevelGenerator : MonoBehaviour
         {
             if (EnemiesMax[i] > 0 && this.EnemyCounts[i] > EnemiesMax[i])
             {
-                Debug.Log(string.Format("Clamping EnemiesCount[{0}", i));
+                Debug.Log(string.Format("Clamping EnemiesCount[{0}]", i));
             }
             if (this.EnemyCounts[i] < EnemiesMin[i])
             {
-                Debug.Log(string.Format("Clamping EnemiesCount[{0}", i));
+                Debug.Log(string.Format("Clamping EnemiesCount[{0}]", i));
             }
         }
     }
