@@ -197,7 +197,7 @@ public class GameController : MonoBehaviour
                 break;
             case PyramidConstructionState.BUILDING:
 
-                pyramidBuilder.transform.position += new Vector3(1 * pyramidBuilder.transform.localScale.x, 0);
+                pyramidBuilder.transform.position += new Vector3(2 * pyramidBuilder.transform.localScale.x, 0);
 
                 if (pyramidBuilder.transform.position.x > 84 && pyramidBuilder.transform.localScale.x > 0)
                 {
@@ -237,10 +237,12 @@ public class GameController : MonoBehaviour
             case PyramidConstructionState.RETURN:
                 if (pyramidBuilder.transform.position.x != 0)
                 {
-                    pyramidBuilder.transform.position += new Vector3(1 * pyramidBuilder.transform.localScale.x, 0);
-                } else
+                    pyramidBuilder.transform.position += new Vector3(2 * pyramidBuilder.transform.localScale.x, 0);
+                }
+                else
                 {
                     pyramidBuilder.GetComponent<NPC>().Converted = true;
+                    pyramidBuilder.GetComponent<NPC>().AnimateInterval = 0.25f;
                     if (pyramidSize == 10)
                     {
                         pyramidBuilder.transform.localScale *= 3;
