@@ -24,7 +24,26 @@ public class LevelGenerator : MonoBehaviour
 
     public GameController gameController;
 
-    public int LevelLengthFactor = 50;
+    [Header("Level generation parameters")]
+    public float LevelLengthM = 25f;
+    public float LevelLengthA = 0f;
+    public float LevelLengthB = 0f;
+    public float LevelLengthC = 25f;
+
+    public float FriendliesM = 6.12f;
+    public float FriendliesA = 0f;
+    public float FriendliesB = -0.162f;
+    public float FriendliesC = 4f;
+    public int FriendliesMin = 5;
+    public int FriendliesMax = 75;
+
+    public float[] EnemiesM;
+    public float[] EnemiesA;
+    public float[] EnemiesB;
+    public float[] EnemiesC;
+    public int[] EnemiesMin;
+    public int[] EnemiesMax;
+
     public int StartY = -200;
     public int RiverWidth = 2;
     public int TileSize = 16;
@@ -57,7 +76,7 @@ public class LevelGenerator : MonoBehaviour
         gameController = FindObjectOfType<GameController>();
         gameController.IsRunning = false;
 
-        targetLength = ScoreManager.Instance.Level * LevelLengthFactor;
+        CalculateLevelParameters();
 
         screenTileXSize = gameController.TargetX / TileSize;
     }
@@ -426,5 +445,43 @@ public class LevelGenerator : MonoBehaviour
 
         worldX += TileSize / 2;
         return new Vector3(worldX, worldY, z);
+    }
+
+    private void CalculateLevelParameters()
+    {
+        int x = ScoreManager.Instance.Level;
+        this.targetLength = Mathf.RoundToInt((LevelLengthA * Mathf.Pow(x, 3)) + (LevelLengthB * Mathf.Pow(x, 2)) + (LevelLengthC * x) + LevelLengthM);
+
+        this.FriendlyCount = Mathf.RoundToInt((FriendliesA * Mathf.Pow(x, 3)) + (FriendliesB * Mathf.Pow(x, 2)) + (FriendliesC * x) + FriendliesM);
+        Debug.Log(string.Format("targetLength: {0}", targetLength));
+        Debug.Log(string.Format("FriendlyCount: {0}", FriendlyCount));
+
+        for (int i = 0; i < EnemyPrefabs.Length; i++)
+        {
+            this.EnemyCounts[i] = Mathf.RoundToInt((EnemiesA[i] * Mathf.Pow(x, 3)) + (EnemiesB[i] * Mathf.Pow(x, 2)) + (EnemiesC[i] * x) + EnemiesM[i]);
+            Debug.Log(string.Format("EnemyCount[{0}]: {1}", i, EnemyCounts[i]));
+        }
+        if (FriendliesMax > 0 && this.FriendlyCount > FriendliesMax)
+        {
+            Debug.Log("Clamping FriendlyCount");
+            FriendlyCount = FriendliesMax;
+        }
+        if (this.FriendlyCount < FriendliesMin)
+        {
+            Debug.Log("Clamping FriendlyCount");
+            FriendlyCount = FriendliesMin;
+        }
+
+        for (int i = 0; i < EnemyPrefabs.Length; i++)
+        {
+            if (EnemiesMax[i] > 0 && this.EnemyCounts[i] > EnemiesMax[i])
+            {
+                Debug.Log(string.Format("Clamping EnemiesCount[{0}", i));
+            }
+            if (this.EnemyCounts[i] < EnemiesMin[i])
+            {
+                Debug.Log(string.Format("Clamping EnemiesCount[{0}", i));
+            }
+        }
     }
 }

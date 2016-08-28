@@ -707,7 +707,30 @@ MonoBehaviour:
   FriendlyCount: 10
   EnemyCounts: 0200000002000000
   gameController: {fileID: 0}
-  LevelLengthFactor: 50
+  LevelLengthM: 25
+  LevelLengthA: 0
+  LevelLengthB: 0
+  LevelLengthC: 25
+  FriendliesM: 4.83
+  FriendliesA: -0.0131
+  FriendliesB: 0.127
+  FriendliesC: 5.05
+  FriendliesMin: 5
+  FriendliesMax: 75
+  EnemiesM:
+  - -1.85
+  - 2
+  EnemiesA:
+  - 0.000596
+  - 0
+  EnemiesB:
+  - -0.0821
+  - 0
+  EnemiesC:
+  - 3.76
+  - 0
+  EnemiesMin: 0200000000000000
+  EnemiesMax: 0000000000000000
   StartY: -100
   RiverWidth: 4
   TileSize: 16
