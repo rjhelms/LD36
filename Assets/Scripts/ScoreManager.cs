@@ -12,4 +12,7 @@ public class ScoreManager : Singleton<ScoreManager>
     public int Level = 1;
 
     public GameController GameController;
+
+    public int NextHitPoint = 0;
+    public int NextOneUp = 0;
 }

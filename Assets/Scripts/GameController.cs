@@ -53,6 +53,9 @@ public class GameController : MonoBehaviour
     public float BaseNPCFireCooldown = 1.0f;
     public int PyramidTilePoints = 10;
     public float PotentialPoints = 0;
+    public int HitPointGainThreshhold = 2000;
+    public int OneUpThreshhold = 5000;
+    public int OneUpMultiplier = 2;
     private int levelStartScore;
 
     [Header("Prefabs")]
@@ -64,6 +67,9 @@ public class GameController : MonoBehaviour
     public AudioClip PlayerLoseSound;
     public AudioClip NPCConvertedSound;
     public AudioClip PyramidBuildSound;
+    public AudioClip PlayerOneUpSound;
+    public AudioClip PlayerGainHitPointSound;
+
     private AudioSource audioSource;
 
     [Header("PyramidBuilder")]
@@ -94,6 +100,12 @@ public class GameController : MonoBehaviour
         }
         audioSource = this.GetComponent<AudioSource>();
         ScoreManager.Instance.GameController = this;
+
+        if (ScoreManager.Instance.NextHitPoint == 0)
+        {
+            ScoreManager.Instance.NextHitPoint = HitPointGainThreshhold;
+            ScoreManager.Instance.NextOneUp = OneUpThreshhold;
+        }
     }
 
     void Update()
@@ -102,6 +114,7 @@ public class GameController : MonoBehaviour
         {
             if (Input.GetButtonDown("Fire1"))
             {
+                ScoreManager.Instance.Level++;
                 SceneManager.LoadScene("Main");
             }
         }
@@ -119,7 +132,7 @@ public class GameController : MonoBehaviour
             WorldCamera.transform.position = new Vector3(0, PlayerTransform.position.y - this.PlayerCameraYOffset, -10);
         UIHitPointPanelTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, ScoreManager.Instance.HitPoints * 16);
         ScoreText.text = System.String.Format("{0}", ScoreManager.Instance.Score);
-        LivesText.text = System.String.Format("LEVEL {0,-3} LIVES {0,-2}", ScoreManager.Instance.Level, ScoreManager.Instance.Lives);
+        LivesText.text = System.String.Format("LEVEL {0,-3} LIVES {1,-2}", ScoreManager.Instance.Level, ScoreManager.Instance.Lives);
         Canvas.ForceUpdateCanvases();
     }
 
@@ -164,6 +177,23 @@ public class GameController : MonoBehaviour
     public void AddPoints(int value)
     {
         ScoreManager.Instance.Score += value;
+        if (ScoreManager.Instance.Score >= ScoreManager.Instance.NextHitPoint)
+        {
+            if (ScoreManager.Instance.HitPoints < ScoreManager.Instance.MaxHitPoints)
+            {
+                ScoreManager.Instance.HitPoints++;
+            }
+            ScoreManager.Instance.NextHitPoint += this.HitPointGainThreshhold;
+            audioSource.pitch = Random.Range(0.95f, 1.05f);
+            audioSource.PlayOneShot(PlayerGainHitPointSound);
+        }
+        if (ScoreManager.Instance.Score >= ScoreManager.Instance.NextOneUp)
+        {
+            ScoreManager.Instance.Lives++;
+            ScoreManager.Instance.NextOneUp *= this.OneUpMultiplier;
+            audioSource.pitch = Random.Range(0.95f, 1.05f);
+            audioSource.PlayOneShot(PlayerOneUpSound);
+        }
 
     }
     public void RegisterConversion(int value)

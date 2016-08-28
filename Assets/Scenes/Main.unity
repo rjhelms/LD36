@@ -1707,6 +1707,9 @@ MonoBehaviour:
   BaseNPCFireCooldown: 1
   PyramidTilePoints: 10
   PotentialPoints: 0
+  HitPointGainThreshhold: 2000
+  OneUpThreshhold: 5000
+  OneUpMultiplier: 2
   PlayerProjectilePrefab: {fileID: 1000011340763166, guid: 46759d9eb2898f64a86c2e4550a899f4,
     type: 2}
   NPCPrefabs: []
@@ -1714,6 +1717,9 @@ MonoBehaviour:
   PlayerLoseSound: {fileID: 8300000, guid: 7816d62ca5a44be4b9aabd6236544e96, type: 3}
   NPCConvertedSound: {fileID: 8300000, guid: 7c81911036c44d54a83821141c1b2cd5, type: 3}
   PyramidBuildSound: {fileID: 8300000, guid: eed684c254a12ff49b089e664e7fa75f, type: 3}
+  PlayerOneUpSound: {fileID: 8300000, guid: d0971f34280d1254e96884c0e3bcb25d, type: 3}
+  PlayerGainHitPointSound: {fileID: 8300000, guid: 0b9ff05ba980b3e42954422ea5733852,
+    type: 3}
   WinState: 0
   PyramidBuilderPrefab: {fileID: 1000012168488106, guid: 9230e04635a5d0f44824641d0166c66b,
     type: 2}
