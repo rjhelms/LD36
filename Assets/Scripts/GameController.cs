@@ -274,7 +274,6 @@ public class GameController : MonoBehaviour
                 if (((int)pyramidBuilder.transform.position.x + 72) % 16 == 0)
                 {
                     int position = Mathf.RoundToInt((pyramidBuilder.transform.position.x + 72) / 16);
-                    Debug.Log(position);
                     if (currentPyramidRow[position] != null)
                     {
                         Instantiate(currentPyramidRow[position], new Vector3(pyramidBuilder.transform.position.x, pyramidBuilder.transform.position.y - 8, 2), Quaternion.identity);
