@@ -26,6 +26,8 @@ public class GameController : MonoBehaviour
     public SpriteRenderer PlayerSpriteRenderer;
     public bool IsRunning;
     public bool IsWinning;
+    public bool IsLosing;
+    public bool IsGameOver;
 
     [Header("Resolution and Display")]
     public int TargetX = 160;
@@ -55,8 +57,9 @@ public class GameController : MonoBehaviour
     public int PyramidTilePoints = 10;
     public float PotentialPoints = 0;
     public int HitPointGainThreshhold = 2000;
+    public float HitPointMultiplier = 1.1f;
     public int OneUpThreshhold = 5000;
-    public int OneUpMultiplier = 2;
+    public float OneUpMultiplier = 2f;
     public float HitImmunityTime = 0.5f;
     public float HitImmunityFlashSpeed = 0.12f;
 
@@ -113,18 +116,21 @@ public class GameController : MonoBehaviour
         {
             ScoreManager.Instance.NextHitPoint = HitPointGainThreshhold;
             ScoreManager.Instance.NextOneUp = OneUpThreshhold;
+            ScoreManager.Instance.HitPointThreshholdIncrease = HitPointGainThreshhold;
         }
 
         if (ScoreManager.Instance.Level >= 6)
         {
             this.MoveSpeedY++;
             this.ProjectileSpeed++;
+            this.ShootInterval = 0.1f;
         }
 
-        if (ScoreManager.Instance.Level >12)
+        if (ScoreManager.Instance.Level > 12)
         {
             this.MoveSpeedY++;
             this.ProjectileSpeed++;
+            this.ShootInterval = 0.075f;
         }
 
         GameObject[] musicPlayers = GameObject.FindGameObjectsWithTag("Music");
@@ -151,7 +157,19 @@ public class GameController : MonoBehaviour
             ScoreManager.Instance.Level++;
             SceneManager.LoadScene("Main");
         }
+
+        if (IsLosing)
+        {
+            if (!audioSource.isPlaying)
+            {
+                if (!IsGameOver)
+                {
+                    SceneManager.LoadScene("Main");
+                }
+            }
+        }
     }
+
     void FixedUpdate()
     {
         if (IsRunning)
@@ -183,9 +201,19 @@ public class GameController : MonoBehaviour
     {
         if (IsRunning)
             WorldCamera.transform.position = new Vector3(0, PlayerTransform.position.y - this.PlayerCameraYOffset, -10);
-        UIHitPointPanelTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, ScoreManager.Instance.HitPoints * 16);
+
         ScoreText.text = System.String.Format("{0}", ScoreManager.Instance.Score);
-        LivesText.text = System.String.Format("LEVEL {0,-3} LIVES {1,-2}", ScoreManager.Instance.Level, ScoreManager.Instance.Lives);
+        if (!IsLosing)
+        {
+            UIHitPointPanelTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, ScoreManager.Instance.HitPoints * 16);
+        } else
+        {
+            UIHitPointPanelTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, ScoreManager.Instance.HitPoints * 0);
+        }
+        if (!IsGameOver)
+        {
+            LivesText.text = System.String.Format("LEVEL {0,-3} LIVES {1,-2}", ScoreManager.Instance.Level, ScoreManager.Instance.Lives);
+        }
         Canvas.ForceUpdateCanvases();
     }
 
@@ -211,19 +239,22 @@ public class GameController : MonoBehaviour
     }
     public void Lose()
     {
-        ScoreManager.Instance.Lives--;
-        if (ScoreManager.Instance.Lives >= 0)
+        if (ScoreManager.Instance.Lives > 0)
         {
+            ScoreManager.Instance.Lives--;
             ScoreManager.Instance.HitPoints = 3;
-            SceneManager.LoadScene("Main");
+            IsRunning = false;
+            IsLosing = true;
+            IsGameOver = false;
         }
         else
         {
             IsRunning = false;
-            audioSource.pitch = Random.Range(0.95f, 1.05f);
-            audioSource.PlayOneShot(PlayerLoseSound);
-            Debug.Log("lost");
+            IsLosing = true;
+            IsGameOver = true;
         }
+
+        audioSource.PlayOneShot(PlayerLoseSound);
     }
 
     public void LevelClear()
@@ -251,13 +282,14 @@ public class GameController : MonoBehaviour
             {
                 ScoreManager.Instance.HitPoints++;
             }
-            ScoreManager.Instance.NextHitPoint += this.HitPointGainThreshhold;
+            ScoreManager.Instance.NextHitPoint += ScoreManager.Instance.HitPointThreshholdIncrease;
+            ScoreManager.Instance.HitPointThreshholdIncrease = Mathf.RoundToInt(ScoreManager.Instance.HitPointThreshholdIncrease * this.HitPointMultiplier);
             audioSource.PlayOneShot(PlayerGainHitPointSound);
         }
         if (ScoreManager.Instance.Score >= ScoreManager.Instance.NextOneUp)
         {
             ScoreManager.Instance.Lives++;
-            ScoreManager.Instance.NextOneUp *= this.OneUpMultiplier;
+            ScoreManager.Instance.NextOneUp = Mathf.RoundToInt(ScoreManager.Instance.NextOneUp * this.OneUpMultiplier);
             audioSource.PlayOneShot(PlayerOneUpSound);
         }
 
