@@ -13,6 +13,8 @@ public class NPC : MonoBehaviour
     public float AnimateInterval;
     public bool PlaceInWater = false;
 
+    public int PointsValue = 100;
+
     protected int SpriteState;
     protected float nextSpriteChange;
     protected SpriteRenderer spriteRenderer;
@@ -78,6 +80,7 @@ public class NPC : MonoBehaviour
             this.GetComponent<BoxCollider2D>().enabled = false;
             spriteRenderer.sprite = ConvertedSprites[SpriteState];
             nextSpriteChange = Time.time + AnimateInterval;
+            gameController.RegisterConversion(PointsValue);
         }
     }
 

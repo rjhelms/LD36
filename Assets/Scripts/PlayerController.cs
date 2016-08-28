@@ -82,16 +82,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void Hit()
-    {
-        Debug.Log("Hit!");
-        ScoreManager.Instance.HitPoints--;
-        if (ScoreManager.Instance.HitPoints == 0)
-        {
-            gameController.Lose();
-        }
-    }
-
     void OnTriggerEnter2D(Collider2D coll)
     {
         if (coll.gameObject.tag == "LevelEnd")

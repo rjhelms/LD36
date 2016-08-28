@@ -30,11 +30,17 @@ public class GameController : MonoBehaviour
     public float ShootInterval = 5.0f;
     public float NPCWalkSpeed = 1.0f;
     public float NPCBaseStateChangeTime = 0.5f;
+    public float BaseNPCFireCooldown = 1.0f;
 
     [Header("Prefabs")]
     public GameObject PlayerProjectilePrefab;
     public GameObject[] NPCPrefabs;
 
+    [Header("Sounds")]
+    public AudioClip PlayerHitSound;
+    public AudioClip PlayerLoseSound;
+    public AudioClip NPCConvertedSound;
+    private AudioSource audioSource;
     // Use this for initialization
     void Start()
     {
@@ -52,6 +58,7 @@ public class GameController : MonoBehaviour
             RenderTexture.mainTextureOffset = new Vector2(0, (1 - pixelRatioAdjustment) / 2);
             WorldCamera.orthographicSize = TargetX / 2;
         }
+        audioSource = this.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -67,14 +74,36 @@ public class GameController : MonoBehaviour
         Canvas.ForceUpdateCanvases();
     }
 
+    public void PlayerHit()
+    {
+        Debug.Log("Hit!");
+        ScoreManager.Instance.HitPoints--;
+        if (ScoreManager.Instance.HitPoints == 0)
+        {
+            this.Lose();
+        } else
+        {
+            audioSource.pitch = Random.Range(0.95f, 1.05f);
+            audioSource.PlayOneShot(PlayerHitSound);
+        }
+    }
     public void Lose()
     {
         IsRunning = false;
+        audioSource.pitch = Random.Range(0.95f, 1.05f);
+        audioSource.PlayOneShot(PlayerLoseSound);
         Debug.Log("lost");
     }
 
     public void LevelClear()
     {
         IsRunning = false;
+    }
+
+    public void RegisterConversion(int value)
+    {
+        audioSource.pitch = Random.Range(0.95f, 1.05f);
+        audioSource.PlayOneShot(NPCConvertedSound);
+        ScoreManager.Instance.Score += value;
     }
 }

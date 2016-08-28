@@ -23,7 +23,7 @@ class EnemyProjectile : Projectile
         }
         else if (coll.gameObject.tag == "Player")
         {
-            coll.GetComponent<PlayerController>().Hit();
+            gameController.PlayerHit();
             Destroy(this.gameObject);
         }
     }
