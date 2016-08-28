@@ -142,7 +142,6 @@ public class LevelGenerator : MonoBehaviour
                 }
                 currentX++;
                 currentY++;
-                yield return null;
             }
 
             lastRowX = targetLeadingEdge - RiverWidth;
@@ -172,15 +171,16 @@ public class LevelGenerator : MonoBehaviour
                 }
                 currentX--;
                 currentY++;
-                yield return null;
             }
             lastRowX = targetLeadingEdge + 1;   // TODO: why plus one?
         }
 
+        yield return null;
+
         minNPCYCoord = currentY;
 
         // generate main river section
-
+        int cycles = 5;
         lastRowWidth = RiverWidth;
         while (currentY < targetLength)
         {
@@ -292,7 +292,12 @@ public class LevelGenerator : MonoBehaviour
             lastRowX = currentRowX;
             lastRowWidth = currentRowWidth;
             currentY++;
-            yield return null;
+            cycles--;
+            if (cycles == 0)
+            {
+                cycles = 5;
+                yield return null;
+            }
         }
 
         maxNPCYCoord = currentY;
@@ -322,7 +327,6 @@ public class LevelGenerator : MonoBehaviour
                 }
                 currentRowX++;
                 currentY++;
-                yield return null;
             }
         }
         else
@@ -349,7 +353,6 @@ public class LevelGenerator : MonoBehaviour
                 }
                 currentRowX--;
                 currentY++;
-                yield return null;
             }
         }
         Instantiate(LevelEndPrefab, new Vector3(0, StartY - (currentY * TileSize), 5), Quaternion.identity, TerrainTransform);
@@ -360,6 +363,7 @@ public class LevelGenerator : MonoBehaviour
     IEnumerator generateFriendlies()
     {
         int count = 0;
+        int cycles = 5;
         while (count < FriendlyCount)
         {
             bool hasPlacedFriendly = false;
@@ -382,11 +386,21 @@ public class LevelGenerator : MonoBehaviour
                 }
                 else
                 {
-                    yield return null;
+                    cycles--;
+                    if (cycles == 0)
+                    {
+                        cycles = 5;
+                        yield return null;
+                    }
                 }
             }
             count++;
-            yield return null;
+            cycles--;
+            if (cycles == 0)
+            {
+                cycles = 5;
+                yield return null;
+            }
         }
         generateFriendliesRunning = false;
         generateFriendliesDone = true;
@@ -394,6 +408,7 @@ public class LevelGenerator : MonoBehaviour
 
     IEnumerator generateEnemies()
     {
+        int cycles = 5;
         for (int i = 0; i < EnemyCounts.Length; i++)
         {
             int count = 0;
@@ -418,11 +433,21 @@ public class LevelGenerator : MonoBehaviour
                     }
                     else
                     {
-                        yield return null;
+                        cycles--;
+                        if (cycles == 0)
+                        {
+                            cycles = 5;
+                            yield return null;
+                        }
                     }
                 }
                 count++;
-                yield return null;
+                cycles--;
+                if (cycles == 0)
+                {
+                    cycles = 5;
+                    yield return null;
+                }
             }
         }
         generateEnemiesRunning = false;
