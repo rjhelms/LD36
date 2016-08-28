@@ -704,7 +704,7 @@ MonoBehaviour:
   - {fileID: 1000013982665554, guid: 52e7b464840714b43b7e81c0e2985cd3, type: 2}
   - {fileID: 1000010657226992, guid: 1f95cbf6c1a22e74cb7724cd7006c4f6, type: 2}
   FriendlyCount: 10
-  EnemyCounts: 0200000001000000
+  EnemyCounts: 0200000002000000
   gameController: {fileID: 0}
   LevelLengthFactor: 50
   StartY: -100

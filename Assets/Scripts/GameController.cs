@@ -258,11 +258,11 @@ public class GameController : MonoBehaviour
                     {
                         pyramidBuilder.transform.localScale *= 4;
                     }
-                    else if (pyramidSize > 8)
+                    else if (pyramidSize >= 8)
                     {
                         pyramidBuilder.transform.localScale *= 3;
                     }
-                    else if (pyramidSize > 6)
+                    else if (pyramidSize >= 6)
                     {
                         pyramidBuilder.transform.localScale *= 2;
                     }
