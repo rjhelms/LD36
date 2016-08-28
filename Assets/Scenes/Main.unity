@@ -670,6 +670,10 @@ MonoBehaviour:
   StartY: -100
   RiverWidth: 4
   TileSize: 16
+  RiverSinuosity: 0.2
+  RiverWidthChangeChance: 0.25
+  RiverMaxWidth: 6
+  RiverMinWidth: 2
   TerrainTransform: {fileID: 184703564}
 --- !u!1 &1129445797
 GameObject:
