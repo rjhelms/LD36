@@ -168,7 +168,7 @@ MonoBehaviour:
   HasComeOnScreen: 0
   AnimateInterval: 0.25
   PlaceInWater: 0
-  PointsValue: 200
+  PointsValue: 100
   FiringSprites:
   - {fileID: 21300032, guid: 645a0df632ec88140b9cfbeda21e488f, type: 3}
   - {fileID: 21300034, guid: 645a0df632ec88140b9cfbeda21e488f, type: 3}
