@@ -41,6 +41,7 @@ public class GameController : MonoBehaviour
     public RectTransform UIHitPointPanelTransform;
     public GameObject GetReadyPanel;
     public Text ScoreText;
+    public Text LivesText;
 
     [Header("Game Balance")]
     public float MoveSpeedX = 1.0f;
@@ -50,6 +51,7 @@ public class GameController : MonoBehaviour
     public float NPCWalkSpeed = 1.0f;
     public float NPCBaseStateChangeTime = 0.5f;
     public float BaseNPCFireCooldown = 1.0f;
+    public int PyramidTilePoints = 10;
     public float PotentialPoints = 0;
     private int levelStartScore;
 
@@ -106,17 +108,18 @@ public class GameController : MonoBehaviour
     }
     void FixedUpdate()
     {
-        if (IsRunning)
-            UpdateUI();
+        UpdateUI();
         if (IsWinning)
             doPyramidConstruction();
     }
 
     public void UpdateUI()
     {
-        WorldCamera.transform.position = new Vector3(0, PlayerTransform.position.y - this.PlayerCameraYOffset, -10);
+        if (IsRunning)
+            WorldCamera.transform.position = new Vector3(0, PlayerTransform.position.y - this.PlayerCameraYOffset, -10);
         UIHitPointPanelTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, ScoreManager.Instance.HitPoints * 16);
-        ScoreText.text = System.String.Format("{0}",ScoreManager.Instance.Score);
+        ScoreText.text = System.String.Format("{0}", ScoreManager.Instance.Score);
+        LivesText.text = System.String.Format("LEVEL {0,-3} LIVES {0,-2}", ScoreManager.Instance.Level, ScoreManager.Instance.Lives);
         Canvas.ForceUpdateCanvases();
     }
 
@@ -158,11 +161,16 @@ public class GameController : MonoBehaviour
         IsWinning = true;
     }
 
+    public void AddPoints(int value)
+    {
+        ScoreManager.Instance.Score += value;
+
+    }
     public void RegisterConversion(int value)
     {
         audioSource.pitch = Random.Range(0.95f, 1.05f);
         audioSource.PlayOneShot(NPCConvertedSound);
-        ScoreManager.Instance.Score += value;
+        AddPoints(value);
     }
 
     public void StartRunning()
@@ -242,6 +250,7 @@ public class GameController : MonoBehaviour
                         Instantiate(currentPyramidRow[position], new Vector3(pyramidBuilder.transform.position.x, pyramidBuilder.transform.position.y - 8, 2), Quaternion.identity);
                         audioSource.pitch = Random.Range(0.8f, 1.2f);
                         audioSource.PlayOneShot(PyramidBuildSound);
+                        AddPoints(PyramidTilePoints);
                     }
                 }
                 break;
