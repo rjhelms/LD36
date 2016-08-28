@@ -103,7 +103,7 @@ class Bowman : NPC
                 if (Time.fixedTime >= nextStateChangeTime)
                 {
                     State = FireOrWander();
-                    nextStateChangeTime = nextStateChangeTime = Time.fixedTime + (gameController.NPCBaseStateChangeTime * StateChangeTimeMultiplier);
+                    nextStateChangeTime = Time.fixedTime + (gameController.NPCBaseStateChangeTime * StateChangeTimeMultiplier);
                 }
                 break;
         }
