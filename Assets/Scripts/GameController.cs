@@ -241,17 +241,18 @@ public class GameController : MonoBehaviour
                 } else
                 {
                     pyramidBuilder.GetComponent<NPC>().Converted = true;
-                    if (pyramidSize > 6)
-                    {
-                        pyramidBuilder.transform.localScale *= 2;
-                    } else if (pyramidSize == 10)
+                    if (pyramidSize == 10)
                     {
                         pyramidBuilder.transform.localScale *= 3;
+                    }
+                    else if (pyramidSize > 6)
+                    {
+                        pyramidBuilder.transform.localScale *= 2;
                     }
                     WinState++;
                 }
                 break;
-            
+
         }
     }
 }
