@@ -23,6 +23,7 @@ public class GameController : MonoBehaviour
     public Material RenderTexture;
     public Camera WorldCamera;
     public Transform PlayerTransform;
+    public SpriteRenderer PlayerSpriteRenderer;
     public bool IsRunning;
     public bool IsWinning;
 
@@ -56,6 +57,12 @@ public class GameController : MonoBehaviour
     public int HitPointGainThreshhold = 2000;
     public int OneUpThreshhold = 5000;
     public int OneUpMultiplier = 2;
+    public float HitImmunityTime = 0.5f;
+    public float HitImmunityFlashSpeed = 0.12f;
+
+    public float HitImmunityEndTime = 0f;
+    public float HitImmunityNextFlash = 0f;
+
     private int levelStartScore;
 
     [Header("Prefabs")]
@@ -121,9 +128,29 @@ public class GameController : MonoBehaviour
     }
     void FixedUpdate()
     {
-        UpdateUI();
+        if (IsRunning)
+        {
+            if (Time.fixedTime < this.HitImmunityEndTime)
+            {
+                if (Time.fixedTime >= this.HitImmunityNextFlash)
+                {
+                    this.PlayerSpriteRenderer.enabled = !this.PlayerSpriteRenderer.enabled;
+                    this.HitImmunityNextFlash += HitImmunityFlashSpeed;
+                }
+            }
+            else
+            {
+                this.PlayerSpriteRenderer.enabled = true;
+            }
+        }
         if (IsWinning)
+        {
             doPyramidConstruction();
+            this.PlayerSpriteRenderer.enabled = true;
+        }
+
+        UpdateUI();
+
     }
 
     public void UpdateUI()
@@ -138,17 +165,23 @@ public class GameController : MonoBehaviour
 
     public void PlayerHit()
     {
-        Debug.Log("Hit!");
-        ScoreManager.Instance.HitPoints--;
-        if (ScoreManager.Instance.HitPoints == 0)
+        if (Time.fixedTime >= this.HitImmunityEndTime)
         {
-            this.Lose();
+            Debug.Log("Hit!");
+            ScoreManager.Instance.HitPoints--;
+            if (ScoreManager.Instance.HitPoints == 0)
+            {
+                this.Lose();
+            }
+            else
+            {
+                audioSource.pitch = Random.Range(0.95f, 1.05f);
+                audioSource.PlayOneShot(PlayerHitSound);
+                this.HitImmunityEndTime = Time.fixedTime + this.HitImmunityTime;
+                this.HitImmunityNextFlash = Time.fixedTime;
+            }
         }
-        else
-        {
-            audioSource.pitch = Random.Range(0.95f, 1.05f);
-            audioSource.PlayOneShot(PlayerHitSound);
-        }
+
     }
     public void Lose()
     {

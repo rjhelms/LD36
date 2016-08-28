@@ -1686,6 +1686,7 @@ MonoBehaviour:
   RenderTexture: {fileID: 2100000, guid: 32a1eb77e0e950a41b83e167468f4e15, type: 2}
   WorldCamera: {fileID: 400307486}
   PlayerTransform: {fileID: 1433320435}
+  PlayerSpriteRenderer: {fileID: 1433320434}
   IsRunning: 0
   IsWinning: 0
   TargetX: 160
@@ -1710,6 +1711,10 @@ MonoBehaviour:
   HitPointGainThreshhold: 2000
   OneUpThreshhold: 5000
   OneUpMultiplier: 2
+  HitImmunityTime: 1.5
+  HitImmunityFlashSpeed: 0.12
+  HitImmunityEndTime: 0
+  HitImmunityNextFlash: 0
   PlayerProjectilePrefab: {fileID: 1000011340763166, guid: 46759d9eb2898f64a86c2e4550a899f4,
     type: 2}
   NPCPrefabs: []
