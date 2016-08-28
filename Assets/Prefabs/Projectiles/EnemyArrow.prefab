@@ -93,7 +93,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   XMovement: 1
-  YMovement: 1
+  YMovement: 2
 --- !u!212 &212000012413383602
 SpriteRenderer:
   m_ObjectHideFlags: 1
