@@ -9,5 +9,5 @@ public class ScoreManager : Singleton<ScoreManager>
     public int Lives = 3;
     public int HitPoints = 3;
     public int MaxHitPoints = 5;
-    public int Level = 0;
+    public int Level = 1;
 }
