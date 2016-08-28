@@ -382,7 +382,7 @@ MonoBehaviour:
   blackIntensity: 1
   whiteIntensity: 1
   midGrey: 0.2
-  dx11Grain: 1
+  dx11Grain: 0
   softness: 0
   monochrome: 0
   intensities: {x: 1, y: 1, z: 1}
@@ -700,7 +700,7 @@ MonoBehaviour:
   - {fileID: 1000011195000638, guid: 2c76f19ee887e3d41967941c5a7c5a3c, type: 2}
   - {fileID: 1000011943773284, guid: 250278c8e91e5454f910b35ae414726e, type: 2}
   EnemyPrefabs:
-  - {fileID: 1000010657226992, guid: 1f95cbf6c1a22e74cb7724cd7006c4f6, type: 2}
+  - {fileID: 1000013982665554, guid: 52e7b464840714b43b7e81c0e2985cd3, type: 2}
   FriendlyCount: 10
   EnemyCounts: 02000000
   gameController: {fileID: 0}

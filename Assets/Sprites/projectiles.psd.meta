@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 525c75c3768258e46b93617b28490214
-timeCreated: 1472334744
+timeCreated: 1472396647
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -11,6 +11,7 @@ TextureImporter:
     21300008: projectiles_4
     21300010: projectiles_5
     21300012: projectiles_6
+    21300014: projectiles_7
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -147,6 +148,19 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
+        y: 96
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: projectiles_7
+      rect:
+        serializedVersion: 2
+        x: 16
         y: 96
         width: 16
         height: 16
