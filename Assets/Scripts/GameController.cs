@@ -40,6 +40,7 @@ public class GameController : MonoBehaviour
     public Transform UICanvasTransform;
     public RectTransform UIHitPointPanelTransform;
     public GameObject GetReadyPanel;
+    public Text ScoreText;
 
     [Header("Game Balance")]
     public float MoveSpeedX = 1.0f;
@@ -93,6 +94,16 @@ public class GameController : MonoBehaviour
         ScoreManager.Instance.GameController = this;
     }
 
+    void Update()
+    {
+        if (IsWinning && WinState == PyramidConstructionState.DONE)
+        {
+            if (Input.GetButtonDown("Fire1"))
+            {
+                SceneManager.LoadScene("Main");
+            }
+        }
+    }
     void FixedUpdate()
     {
         if (IsRunning)
@@ -105,6 +116,7 @@ public class GameController : MonoBehaviour
     {
         WorldCamera.transform.position = new Vector3(0, PlayerTransform.position.y - this.PlayerCameraYOffset, -10);
         UIHitPointPanelTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, ScoreManager.Instance.HitPoints * 16);
+        ScoreText.text = System.String.Format("{0}",ScoreManager.Instance.Score);
         Canvas.ForceUpdateCanvases();
     }
 

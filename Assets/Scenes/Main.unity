@@ -149,6 +149,7 @@ RectTransform:
   m_Children:
   - {fileID: 1453901009}
   - {fileID: 1129445798}
+  - {fileID: 1479534444}
   - {fileID: 1337897763}
   m_Father: {fileID: 1556617547}
   m_RootOrder: 0
@@ -701,8 +702,9 @@ MonoBehaviour:
   - {fileID: 1000011943773284, guid: 250278c8e91e5454f910b35ae414726e, type: 2}
   EnemyPrefabs:
   - {fileID: 1000013982665554, guid: 52e7b464840714b43b7e81c0e2985cd3, type: 2}
+  - {fileID: 1000010657226992, guid: 1f95cbf6c1a22e74cb7724cd7006c4f6, type: 2}
   FriendlyCount: 10
-  EnemyCounts: 02000000
+  EnemyCounts: 0200000001000000
   gameController: {fileID: 0}
   LevelLengthFactor: 50
   StartY: -100
@@ -965,7 +967,7 @@ RectTransform:
   m_Children:
   - {fileID: 1252702353}
   m_Father: {fileID: 218363108}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -1188,6 +1190,80 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1453901008}
+--- !u!1 &1479534443
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1479534444}
+  - 222: {fileID: 1479534446}
+  - 114: {fileID: 1479534445}
+  m_Layer: 5
+  m_Name: ScoreText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1479534444
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1479534443}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 218363108}
+  m_RootOrder: 2
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 80, y: 8}
+  m_SizeDelta: {x: 160, y: 8}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1479534445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1479534443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: d7ade3e9e9af2c849bd28ad53e255f10, type: 3}
+    m_FontSize: 8
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 8
+    m_MaxSize: 40
+    m_Alignment: 2
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 0
+--- !u!222 &1479534446
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1479534443}
 --- !u!1 &1484616441
 GameObject:
   m_ObjectHideFlags: 0
@@ -1545,6 +1621,7 @@ MonoBehaviour:
   UICanvasTransform: {fileID: 218363108}
   UIHitPointPanelTransform: {fileID: 1129445798}
   GetReadyPanel: {fileID: 1337897762}
+  ScoreText: {fileID: 1479534445}
   MoveSpeedX: 5
   MoveSpeedY: 2
   ProjectileSpeed: 6
