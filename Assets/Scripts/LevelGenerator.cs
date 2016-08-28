@@ -44,6 +44,13 @@ public class LevelGenerator : MonoBehaviour
     public int[] EnemiesMin;
     public int[] EnemiesMax;
 
+    public float WidthM;
+    public float WidthA;
+    public float WidthB;
+    public float WidthC;
+
+    public float DensitityMin = 0.5f;
+    public float DensitityMax = 0.85f;
     public int StartY = -200;
     public int RiverWidth = 2;
     public int TileSize = 16;
@@ -508,5 +515,26 @@ public class LevelGenerator : MonoBehaviour
                 Debug.Log(string.Format("Clamping EnemiesCount[{0}]", i));
             }
         }
+
+        this.RiverWidth = Mathf.RoundToInt((WidthA * Mathf.Pow(x, 3)) + (WidthB * Mathf.Pow(x, 2)) + (WidthC * x) + WidthM);
+        if (this.RiverWidth < this.RiverMinWidth)
+        {
+            this.RiverWidth = this.RiverMinWidth;
+        }
+        else if (this.RiverWidth > this.RiverMaxWidth)
+        {
+            this.RiverWidth = this.RiverMaxWidth;
+        }
+
+        Debug.Log(string.Format("River width: {0}", this.RiverWidth));
+
+        float density = 0f;
+        density += FriendlyCount;
+        for (int i = 0; i < EnemyPrefabs.Length; i++)
+        {
+            density += EnemyCounts[i];
+        }
+        density = density / targetLength;
+        Debug.Log(string.Format("Level density: {0}", density));
     }
 }
