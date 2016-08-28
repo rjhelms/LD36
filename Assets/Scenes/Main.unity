@@ -1547,7 +1547,7 @@ MonoBehaviour:
   GetReadyPanel: {fileID: 1337897762}
   MoveSpeedX: 5
   MoveSpeedY: 2
-  ProjectileSpeed: 5
+  ProjectileSpeed: 6
   ShootInterval: 0.15
   NPCWalkSpeed: 1
   NPCBaseStateChangeTime: 0.25
