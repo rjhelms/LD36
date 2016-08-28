@@ -113,6 +113,18 @@ public class GameController : MonoBehaviour
             ScoreManager.Instance.NextHitPoint = HitPointGainThreshhold;
             ScoreManager.Instance.NextOneUp = OneUpThreshhold;
         }
+
+        if (ScoreManager.Instance.Level >= 6)
+        {
+            this.MoveSpeedY++;
+            this.ProjectileSpeed++;
+        }
+
+        if (ScoreManager.Instance.Level >12)
+        {
+            this.MoveSpeedY++;
+            this.ProjectileSpeed++;
+        }
     }
 
     void Update()
@@ -232,14 +244,12 @@ public class GameController : MonoBehaviour
                 ScoreManager.Instance.HitPoints++;
             }
             ScoreManager.Instance.NextHitPoint += this.HitPointGainThreshhold;
-            audioSource.pitch = Random.Range(0.95f, 1.05f);
             audioSource.PlayOneShot(PlayerGainHitPointSound);
         }
         if (ScoreManager.Instance.Score >= ScoreManager.Instance.NextOneUp)
         {
             ScoreManager.Instance.Lives++;
             ScoreManager.Instance.NextOneUp *= this.OneUpMultiplier;
-            audioSource.pitch = Random.Range(0.95f, 1.05f);
             audioSource.PlayOneShot(PlayerOneUpSound);
         }
 
@@ -287,6 +297,7 @@ public class GameController : MonoBehaviour
                 if (WorldCamera.transform.position.y - PlayerTransform.position.y > 100)
                 {
                     WinState++;
+                    audioSource.pitch = 0.7f;
                     pyramidBuilder = (GameObject)Instantiate(PyramidBuilderPrefab, new Vector3(-84, WorldCamera.transform.position.y - 36, 1), Quaternion.identity);
                     currentPyramidRowSize = pyramidSize;
                     BuildPyramidRow();
@@ -325,9 +336,9 @@ public class GameController : MonoBehaviour
                     if (currentPyramidRow[position] != null)
                     {
                         Instantiate(currentPyramidRow[position], new Vector3(pyramidBuilder.transform.position.x, pyramidBuilder.transform.position.y - 8, 2), Quaternion.identity);
-                        audioSource.pitch = Random.Range(0.8f, 1.2f);
+                        audioSource.pitch += 0.02f;
                         audioSource.PlayOneShot(PyramidBuildSound);
-                        AddPoints(PyramidTilePoints);
+                        AddPoints(PyramidTilePoints * ScoreManager.Instance.Level);
                     }
                 }
                 break;

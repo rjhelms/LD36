@@ -707,7 +707,7 @@ MonoBehaviour:
   FriendlyCount: 10
   EnemyCounts: 0200000002000000
   gameController: {fileID: 0}
-  LevelLengthM: 25
+  LevelLengthM: 30
   LevelLengthA: 0
   LevelLengthB: 0
   LevelLengthC: 15
@@ -731,6 +731,12 @@ MonoBehaviour:
   - 3.3
   EnemiesMin: 0200000002000000
   EnemiesMax: 0000000000000000
+  WidthM: 5.375
+  WidthA: -0.000228
+  WidthB: 0.0115
+  WidthC: -0.385
+  DensitityMin: 0.5
+  DensitityMax: 0.85
   StartY: -100
   RiverWidth: 4
   TileSize: 16
@@ -920,7 +926,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 160, y: 60}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1252702354
 MonoBehaviour:
@@ -948,7 +954,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40
-    m_Alignment: 1
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -1729,7 +1735,7 @@ MonoBehaviour:
   NPCWalkSpeed: 1
   NPCBaseStateChangeTime: 0.25
   BaseNPCFireCooldown: 1
-  PyramidTilePoints: 10
+  PyramidTilePoints: 5
   PotentialPoints: 0
   HitPointGainThreshhold: 2000
   OneUpThreshhold: 5000
