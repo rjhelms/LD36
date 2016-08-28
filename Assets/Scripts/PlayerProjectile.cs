@@ -4,9 +4,8 @@ public class PlayerProjectile : Projectile
 {
     void FixedUpdate()
     {
-        if (gameController.IsRunning)
         {
-            transform.position += new Vector3(0, -gameController.ProjectileSpeed, 0);
+            transform.position += new Vector3(0, -ScoreManager.Instance.GameController.ProjectileSpeed, 0);
         }
     }
 

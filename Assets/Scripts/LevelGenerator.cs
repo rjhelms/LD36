@@ -57,7 +57,7 @@ public class LevelGenerator : MonoBehaviour
         gameController = FindObjectOfType<GameController>();
         gameController.IsRunning = false;
 
-        targetLength = ScoreManager.Instance.Level * 50;
+        targetLength = ScoreManager.Instance.Level * LevelLengthFactor;
 
         screenTileXSize = gameController.TargetX / TileSize;
         Debug.Log("World is " + screenTileXSize + " tiles wide");
@@ -84,7 +84,7 @@ public class LevelGenerator : MonoBehaviour
         else if (generateRiverDone && generateFriendliesDone && generateEnemiesDone && !generationDone)
         {
             generationDone = true;
-            gameController.IsRunning = true;
+            gameController.StartRunning();
         }
     }
 
@@ -227,9 +227,9 @@ public class LevelGenerator : MonoBehaviour
                 currentRowWidth -= 1;
 
             // instantiate thingies
-            Debug.Log("CurrentY: " + currentY);
-            Debug.Log("CurrentRowX: " + currentRowX);
-            Debug.Log("CurrentRowWidth: " + currentRowWidth);
+            //Debug.Log("CurrentY: " + currentY);
+            //Debug.Log("CurrentRowX: " + currentRowX);
+            //Debug.Log("CurrentRowWidth: " + currentRowWidth);
             // create left bank
             if (currentRowX < lastRowX)
             {
@@ -252,7 +252,7 @@ public class LevelGenerator : MonoBehaviour
             // create right bank
             int lastRowRightBank = lastRowX + lastRowWidth - 1;
             int currentRowRightBank = currentRowX + currentRowWidth - 1;
-            Debug.Log("currentRowRightBank: " + currentRowRightBank);
+            //Debug.Log("currentRowRightBank: " + currentRowRightBank);
             if (currentRowRightBank < lastRowRightBank)
             {
                 Instantiate(RiverPrefabs[(int)RiverPiece.NW], tileCoordToPosition(currentRowRightBank + 1, currentY), Quaternion.identity, TerrainTransform);
@@ -369,6 +369,7 @@ public class LevelGenerator : MonoBehaviour
                         newFriendly.transform.localScale = new Vector3(-1, 1, 1);
                     }
                     hasPlacedFriendly = true;
+                    gameController.PotentialPoints += newFriendly.GetComponent<NPC>().PointsValue;
                 }
                 else
                 {
@@ -404,6 +405,7 @@ public class LevelGenerator : MonoBehaviour
                             newEnemy.transform.localScale = new Vector3(-1, 1, 1);
                         }
                         hasPlacedEnemy = true;
+                        gameController.PotentialPoints += newEnemy.GetComponent<NPC>().PointsValue;
                     }
                     else
                     {

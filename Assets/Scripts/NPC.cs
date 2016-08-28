@@ -18,13 +18,11 @@ public class NPC : MonoBehaviour
     protected int SpriteState;
     protected float nextSpriteChange;
     protected SpriteRenderer spriteRenderer;
-    protected GameController gameController;
 
     // Use this for initialization
     void Start()
     {
         spriteRenderer = this.GetComponent<SpriteRenderer>();
-        gameController = FindObjectOfType<GameController>();
 
         nextSpriteChange = Time.time + AnimateInterval;
         SpriteState = 0;
@@ -33,42 +31,51 @@ public class NPC : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
-        if (gameController.IsRunning)
+        if (Time.time > nextSpriteChange)
         {
-            if (Time.time > nextSpriteChange)
+            SpriteState++;
+            if (Converted && SpriteState == ConvertedSprites.GetLength(0))
+                SpriteState = 0;
+            if (!Converted && SpriteState == UnconvertedSprites.GetLength(0))
+                SpriteState = 0;
+            if (Converted)
             {
-                SpriteState++;
-                if (Converted && SpriteState == ConvertedSprites.GetLength(0))
-                    SpriteState = 0;
-                if (!Converted && SpriteState == UnconvertedSprites.GetLength(0))
-                    SpriteState = 0;
-                if (Converted)
-                {
-                    spriteRenderer.sprite = ConvertedSprites[SpriteState];
-                }
-                else
-                {
-                    spriteRenderer.sprite = UnconvertedSprites[SpriteState];
-                }
-                nextSpriteChange += AnimateInterval;
+                spriteRenderer.sprite = ConvertedSprites[SpriteState];
             }
+            else
+            {
+                spriteRenderer.sprite = UnconvertedSprites[SpriteState];
+            }
+            nextSpriteChange += AnimateInterval;
         }
     }
 
     void FixedUpdate()
     {
-        if (gameController.IsRunning && HasComeOnScreen && !Converted)
+        if (ScoreManager.Instance.GameController.IsRunning && HasComeOnScreen && !Converted)
             this.DoFrameAction();
     }
 
     void OnTriggerEnter2D(Collider2D coll)
     {
-        if (coll.gameObject.tag == "Bottom")
-            HasComeOnScreen = true;
-        else if (coll.gameObject.tag == "Bounds" || coll.gameObject.tag == "NPC"
-            || coll.gameObject.tag == "AICollision" || coll.gameObject.tag == "Terrain")
+        if (ScoreManager.Instance.GameController.IsRunning)
         {
-            this.transform.localScale = new Vector3(this.transform.localScale.x * -1, 1, 1);
+            if (coll.gameObject.tag == "Bottom")
+                HasComeOnScreen = true;
+            else if (coll.gameObject.tag == "Bounds" || coll.gameObject.tag == "NPC"
+                || coll.gameObject.tag == "AICollision" || coll.gameObject.tag == "Terrain")
+            {
+                this.transform.localScale = new Vector3(this.transform.localScale.x * -1, 1, 1);
+            }
+        }
+    }
+
+    void OnTriggerExit2D(Collider2D coll)
+    {
+        if (ScoreManager.Instance.GameController.IsRunning)
+        {
+            if (coll.gameObject.tag == "Bottom")
+                HasComeOnScreen = true;
         }
     }
 
@@ -80,7 +87,7 @@ public class NPC : MonoBehaviour
             this.GetComponent<BoxCollider2D>().enabled = false;
             spriteRenderer.sprite = ConvertedSprites[SpriteState];
             nextSpriteChange = Time.time + AnimateInterval;
-            gameController.RegisterConversion(PointsValue);
+            ScoreManager.Instance.GameController.RegisterConversion(PointsValue);
         }
     }
 
@@ -88,11 +95,11 @@ public class NPC : MonoBehaviour
     {
         if (this.transform.localScale.x > 0)
         {
-            this.transform.position += new Vector3(gameController.NPCWalkSpeed, 0);
+            this.transform.position += new Vector3(ScoreManager.Instance.GameController.NPCWalkSpeed, 0);
         }
         else
         {
-            this.transform.position -= new Vector3(gameController.NPCWalkSpeed, 0);
+            this.transform.position -= new Vector3(ScoreManager.Instance.GameController.NPCWalkSpeed, 0);
         }
     }
 

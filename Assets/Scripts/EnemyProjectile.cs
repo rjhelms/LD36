@@ -8,7 +8,7 @@ class EnemyProjectile : Projectile
 
     void FixedUpdate()
     {
-        if (gameController.IsRunning)
+        if (ScoreManager.Instance.GameController.IsRunning)
         {
             Vector3 moveVector = new Vector3(XMovement * this.transform.localScale.x, YMovement);
             this.transform.position += moveVector;
@@ -23,7 +23,7 @@ class EnemyProjectile : Projectile
         }
         else if (coll.gameObject.tag == "Player")
         {
-            gameController.PlayerHit();
+            ScoreManager.Instance.GameController.PlayerHit();
             Destroy(this.gameObject);
         }
     }

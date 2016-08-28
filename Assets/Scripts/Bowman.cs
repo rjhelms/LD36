@@ -26,11 +26,11 @@ class Bowman : NPC
 
     protected override void Update()
     {
-        if (gameController.IsRunning)
+        if (ScoreManager.Instance.GameController.IsRunning)
         { 
         if (nextStateChangeTime == null && HasComeOnScreen)
         {
-            nextStateChangeTime = Time.fixedTime + (gameController.NPCBaseStateChangeTime * StateChangeTimeMultiplier);
+            nextStateChangeTime = Time.fixedTime + (ScoreManager.Instance.GameController.NPCBaseStateChangeTime * StateChangeTimeMultiplier);
         }
 
         if (Converted)
@@ -83,27 +83,27 @@ class Bowman : NPC
                 if (Time.fixedTime >= nextStateChangeTime)
                 {
                     State = FireOrWander();
-                    nextStateChangeTime = Time.fixedTime + (gameController.NPCBaseStateChangeTime * StateChangeTimeMultiplier);
+                    nextStateChangeTime = Time.fixedTime + (ScoreManager.Instance.GameController.NPCBaseStateChangeTime * StateChangeTimeMultiplier);
                 }
                 break;
             case BowmanState.READY_FIRE:
                 if (Time.fixedTime >= nextStateChangeTime)
                 {
                     State++;
-                    nextStateChangeTime = Time.fixedTime + (gameController.NPCBaseStateChangeTime * StateChangeTimeMultiplier);
+                    nextStateChangeTime = Time.fixedTime + (ScoreManager.Instance.GameController.NPCBaseStateChangeTime * StateChangeTimeMultiplier);
                 }
                 break;
             case BowmanState.FIRE:
                 GameObject projectile = (GameObject)Instantiate(ProjectilePrefab, ArrowSpawnPoint.transform.position, Quaternion.identity);
                 projectile.transform.localScale = this.transform.localScale;
-                nextStateChangeTime = Time.fixedTime + (gameController.BaseNPCFireCooldown * StateChangeTimeMultiplier);
+                nextStateChangeTime = Time.fixedTime + (ScoreManager.Instance.GameController.BaseNPCFireCooldown * StateChangeTimeMultiplier);
                 State++;
                 break;
             case BowmanState.COOLDOWN:
                 if (Time.fixedTime >= nextStateChangeTime)
                 {
                     State = FireOrWander();
-                    nextStateChangeTime = Time.fixedTime + (gameController.NPCBaseStateChangeTime * StateChangeTimeMultiplier);
+                    nextStateChangeTime = Time.fixedTime + (ScoreManager.Instance.GameController.NPCBaseStateChangeTime * StateChangeTimeMultiplier);
                 }
                 break;
         }
@@ -114,10 +114,10 @@ class Bowman : NPC
         float fireRoll = Random.value;
         if (fireRoll <= this.FireChance)
         {
-            if (this.transform.position.x > gameController.PlayerTransform.position.x)
+            if (this.transform.position.x > ScoreManager.Instance.GameController.PlayerTransform.position.x)
             {
                 this.transform.localScale = new Vector3(-1, 1, 1);
-            } else if (this.transform.position.x < gameController.PlayerTransform.position.x)
+            } else if (this.transform.position.x < ScoreManager.Instance.GameController.PlayerTransform.position.x)
             {
                 this.transform.localScale = new Vector3(1, 1, 1);
             }
