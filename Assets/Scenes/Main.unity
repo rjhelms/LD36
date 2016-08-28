@@ -719,17 +719,17 @@ MonoBehaviour:
   FriendliesMax: 75
   EnemiesM:
   - -1.85
-  - 2
+  - -0.153
   EnemiesA:
   - 0.000596
-  - 0
+  - 0.0025
   EnemiesB:
   - -0.0821
-  - 0
+  - -0.0527
   EnemiesC:
   - 3.76
-  - 0
-  EnemiesMin: 0200000000000000
+  - 1.011
+  EnemiesMin: 0200000002000000
   EnemiesMax: 0000000000000000
   StartY: -100
   RiverWidth: 4
