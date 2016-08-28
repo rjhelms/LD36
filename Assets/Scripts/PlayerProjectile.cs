@@ -13,8 +13,6 @@ public class PlayerProjectile : Projectile
     {
         if (coll.gameObject.tag == "Bottom")
         {
-            Debug.Log("Collided with bottom bounds");
-
             /* 
              * Disable the collider, and destroy it a second later.
              * this allows projectiles to leave the screen before disappearing,
@@ -27,7 +25,6 @@ public class PlayerProjectile : Projectile
 
         if (coll.gameObject.tag == "NPC")
         {
-            Debug.Log("Collided with NPC");
             coll.GetComponent<NPC>().Hit();
             DestroyObject(this.gameObject);
         }

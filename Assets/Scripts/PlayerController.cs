@@ -34,7 +34,6 @@ public class PlayerController : MonoBehaviour
             {
                 if (Time.fixedTime > nextProjectileTime)
                 {
-                    Debug.Log("Fire! " + projectileSpriteIndex);
                     nextProjectileTime = Time.fixedTime + gameController.ShootInterval;
 
                     Vector3 projectilePosition = new Vector3(playerTransform.position.x, playerTransform.position.y - gameController.ProjectileYOffset);

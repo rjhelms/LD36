@@ -60,8 +60,6 @@ public class LevelGenerator : MonoBehaviour
         targetLength = ScoreManager.Instance.Level * LevelLengthFactor;
 
         screenTileXSize = gameController.TargetX / TileSize;
-        Debug.Log("World is " + screenTileXSize + " tiles wide");
-        Debug.Log("Screen is " + gameController.TargetY / TileSize + " units tall");
     }
 
     // Update is called once per frame
@@ -104,8 +102,6 @@ public class LevelGenerator : MonoBehaviour
         float direction = Random.value - 0.5f;
         if (direction < 0.0f)
         {
-            Debug.Log("River coming from left");
-            Debug.Log("Target leading edge: " + targetLeadingEdge);
             while (currentX < targetLeadingEdge)
             {
                 int tileX = currentX;
@@ -136,8 +132,6 @@ public class LevelGenerator : MonoBehaviour
         {
             currentX = screenTileXSize - 1;
             targetLeadingEdge = screenTileXSize - targetLeadingEdge;
-            Debug.Log("River coming from right");
-            Debug.Log("Target leading edge: " + targetLeadingEdge);
             while (currentX > targetLeadingEdge)
             {
                 int tileX = currentX;
@@ -288,8 +282,6 @@ public class LevelGenerator : MonoBehaviour
         if (direction < 0.0f)
         {
             currentRowX += currentRowWidth;
-            Debug.Log("River leaving to the right");
-            Debug.Log("Target leading edge: " + targetLeadingEdge);
             while (currentRowX - currentRowWidth < screenTileXSize)
             {
                 int tileX = currentRowX;
@@ -317,8 +309,6 @@ public class LevelGenerator : MonoBehaviour
         else
         {
             currentRowX--;
-            Debug.Log("River leaving to the left");
-            Debug.Log("Target leading edge: " + targetLeadingEdge);
             while (currentRowX + currentRowWidth + 1 > 0) // TODO: why plus one?
             {
                 int tileX = currentRowX;
