@@ -19,7 +19,6 @@ class Bowman : NPC
     [Header("Balance")]
     public float StateChangeTimeMultiplier = 1.0f;
     public float FireChance = 0.4f;
-
     public Transform ArrowSpawnPoint;
     public BowmanState State;
 
@@ -97,6 +96,7 @@ class Bowman : NPC
             case BowmanState.FIRE:
                 GameObject projectile = (GameObject)Instantiate(ProjectilePrefab, ArrowSpawnPoint.transform.position, Quaternion.identity);
                 projectile.transform.localScale = this.transform.localScale;
+                nextStateChangeTime = Time.fixedTime + (gameController.BaseNPCFireCooldown * StateChangeTimeMultiplier);
                 State++;
                 break;
             case BowmanState.COOLDOWN:
