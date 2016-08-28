@@ -1754,6 +1754,8 @@ MonoBehaviour:
   PlayerOneUpSound: {fileID: 8300000, guid: d0971f34280d1254e96884c0e3bcb25d, type: 3}
   PlayerGainHitPointSound: {fileID: 8300000, guid: 0b9ff05ba980b3e42954422ea5733852,
     type: 3}
+  MusicPlayerPrefab: {fileID: 1000011380896690, guid: 3581bbab4fa9c1341aba5081b9f50a2c,
+    type: 2}
   WinState: 0
   PyramidBuilderPrefab: {fileID: 1000012168488106, guid: 9230e04635a5d0f44824641d0166c66b,
     type: 2}

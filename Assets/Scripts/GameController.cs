@@ -77,6 +77,7 @@ public class GameController : MonoBehaviour
     public AudioClip PlayerOneUpSound;
     public AudioClip PlayerGainHitPointSound;
 
+    public GameObject MusicPlayerPrefab;
     private AudioSource audioSource;
 
     [Header("PyramidBuilder")]
@@ -124,6 +125,13 @@ public class GameController : MonoBehaviour
         {
             this.MoveSpeedY++;
             this.ProjectileSpeed++;
+        }
+
+        GameObject[] musicPlayers = GameObject.FindGameObjectsWithTag("Music");
+        if (musicPlayers.Length == 0)
+        {
+            GameObject musicPlayer = Instantiate(MusicPlayerPrefab);
+            DontDestroyOnLoad(musicPlayer);
         }
     }
 

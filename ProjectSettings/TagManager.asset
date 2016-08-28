@@ -12,6 +12,7 @@ TagManager:
   - NPCProjectile
   - Terrain
   - LevelEnd
+  - Music
   layers:
   - Default
   - TransparentFX
