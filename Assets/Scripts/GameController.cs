@@ -153,11 +153,11 @@ public class GameController : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.KeypadPlus))
-        {
-            ScoreManager.Instance.Level++;
-            SceneManager.LoadScene("Main");
-        }
+        //if (Input.GetKeyDown(KeyCode.KeypadPlus))
+        //{
+        //    ScoreManager.Instance.Level++;
+        //    SceneManager.LoadScene("Main");
+        //}
 
         if (IsLosing)
         {
