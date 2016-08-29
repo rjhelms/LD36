@@ -735,7 +735,7 @@ MonoBehaviour:
   WidthA: -0.000228
   WidthB: 0.0115
   WidthC: -0.385
-  DensitityMin: 0.5
+  DensitityMin: 0.4
   DensitityMax: 0.85
   StartY: -100
   RiverWidth: 4

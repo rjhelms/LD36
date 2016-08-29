@@ -546,15 +546,18 @@ public class LevelGenerator : MonoBehaviour
         {
             densityAdjustment = DensitityMax / density;
         }
-        Debug.Log(string.Format("Density out of whack. Adjusting by {0}", densityAdjustment));
-
-        FriendlyCount = Mathf.RoundToInt(FriendlyCount * densityAdjustment);
-        Debug.Log(string.Format("FriendlyCount: {0}", FriendlyCount));
-
-        for (int i = 0; i < EnemyPrefabs.Length; i++)
+        if (densityAdjustment != 0)
         {
-            this.EnemyCounts[i] = Mathf.RoundToInt(EnemyCounts[i] * densityAdjustment);
-            Debug.Log(string.Format("EnemyCount[{0}]: {1}", i, EnemyCounts[i]));
+            Debug.Log(string.Format("Density out of whack. Adjusting by {0}", densityAdjustment));
+
+            FriendlyCount = Mathf.RoundToInt(FriendlyCount * densityAdjustment);
+            Debug.Log(string.Format("FriendlyCount: {0}", FriendlyCount));
+
+            for (int i = 0; i < EnemyPrefabs.Length; i++)
+            {
+                this.EnemyCounts[i] = Mathf.RoundToInt(EnemyCounts[i] * densityAdjustment);
+                Debug.Log(string.Format("EnemyCount[{0}]: {1}", i, EnemyCounts[i]));
+            }
         }
     }
 }
