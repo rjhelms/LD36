@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour
                     projectileSpriteIndex++;
                     if (projectileSpriteIndex == ProjectileSprites.GetLength(0))
                         projectileSpriteIndex = 0;
+                    gameController.PlayShootSound();
                 }
             }
         }

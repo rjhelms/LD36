@@ -79,6 +79,7 @@ public class GameController : MonoBehaviour
     public AudioClip PyramidBuildSound;
     public AudioClip PlayerOneUpSound;
     public AudioClip PlayerGainHitPointSound;
+    public AudioClip PlayerShootSound;
 
     public GameObject MusicPlayerPrefab;
     private AudioSource audioSource;
@@ -165,6 +166,9 @@ public class GameController : MonoBehaviour
                 if (!IsGameOver)
                 {
                     SceneManager.LoadScene("Main");
+                } else
+                {
+                    SceneManager.LoadScene("GameOver");
                 }
             }
         }
@@ -411,5 +415,10 @@ public class GameController : MonoBehaviour
                     SceneManager.LoadScene("Main");
                 break;
         }
+    }
+
+    public void PlayShootSound()
+    {
+        audioSource.PlayOneShot(PlayerShootSound);
     }
 }
