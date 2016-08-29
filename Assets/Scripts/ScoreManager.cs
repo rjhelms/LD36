@@ -16,4 +16,16 @@ public class ScoreManager : Singleton<ScoreManager>
     public int NextHitPoint = 0;
     public int NextOneUp = 0;
     public int HitPointThreshholdIncrease = 0;
+
+    public void Reset()
+    {
+        this.Score = 0;
+        this.Lives = 3;
+        this.HitPoints = 3;
+        this.MaxHitPoints = 5;
+        this.Level = 1;
+        this.NextHitPoint = 0;
+        this.NextOneUp = 0;
+        this.HitPointThreshholdIncrease = 0;
+    }
 }

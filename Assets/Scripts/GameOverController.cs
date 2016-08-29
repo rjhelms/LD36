@@ -43,10 +43,7 @@ public class GameOverController : MonoBehaviour {
             }
             if (Input.anyKeyDown)
             {
-                ScoreManager.Instance.Score = 0;
-                ScoreManager.Instance.Level = 1;
-                ScoreManager.Instance.Lives = 3;
-                ScoreManager.Instance.HitPoints = 3;
+                ScoreManager.Instance.Reset();
                 SceneManager.LoadScene(0);
             }
         }
