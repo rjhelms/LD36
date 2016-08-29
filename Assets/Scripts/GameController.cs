@@ -146,7 +146,7 @@ public class GameController : MonoBehaviour
     {
         if (IsWinning && WinState == PyramidConstructionState.DONE)
         {
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2") || Input.GetButtonDown("Fire3"))
             {
                 ScoreManager.Instance.Level++;
                 SceneManager.LoadScene("Main");
@@ -411,7 +411,7 @@ public class GameController : MonoBehaviour
                 }
                 break;
             case PyramidConstructionState.DONE:
-                if (Input.GetButtonDown("Fire1"))
+                if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2") || Input.GetButtonDown("Fire3"))
                     SceneManager.LoadScene("Main");
                 break;
         }
