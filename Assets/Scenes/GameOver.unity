@@ -1216,7 +1216,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: PYRAMIDS BUILD IN YOUR HONOUR
+  m_Text: PYRAMIDS BUILT IN YOUR HONOUR
 --- !u!222 &1762367680
 CanvasRenderer:
   m_ObjectHideFlags: 0
