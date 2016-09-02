@@ -22,3 +22,16 @@ obstacles:
 end of level:
 	egyptians build pyramid based on score
 	minimums to proceed?
+	
+level generation:
+
+	- length target 
+		- level # * some factor?
+		- exponential?
+	
+	- create river
+		- width, sinuosity, variance
+		- at end, slides off to one side or another, then level end
+	
+	- create NPCs
+		- target number for each level
